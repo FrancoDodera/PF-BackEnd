@@ -1,14 +1,22 @@
 const express = require('express');
+const addNewUser= require('./controllers/AddUser')
 const app = express();
 
+
+
 // Configuración de middleware
-// app.use(express.json());
+app.use(express.json());
 // // ... Otros middlewares
 
 // // Rutas
 // const carRoutes = require('./routes/carRoutes');
 // app.use('/cars', carRoutes);
 // // ... Otras rutas
+
+app.post('/addUser',(req,res)=>{
+  addNewUser(req,res)
+})
+
 
 // Manejo de errores
 app.use((err, req, res, next) => {

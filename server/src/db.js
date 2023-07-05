@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
-const {USER, PASSWORD, CLUSTER} = process.env
-const URI = `mongodb+srv://${USER}:${PASSWORD}@${CLUSTER}.o4mj3pz.mongodb.net/?retryWrites=true&w=majority`
+const {USER,HOST, PASSWORD, PORT} = process.env
 
+// const URI = `mongodb+srv://${USER}:${PASSWORD}@${CLUSTER}.o4mj3pz.mongodb.net/?retryWrites=true&w=majority`
+// const URI="mongodb://mongo:MwaJrBt90r1ThNOmzoot@containers-us-west-139.railway.app:6523"
+const URI=`mongodb://${USER}:${PASSWORD}@${HOST}:${PORT}`
 // mongoose.connect(URI, {
   //   useNewUrlParser: true,
   //   useUnifiedTopology: true,
@@ -14,6 +16,7 @@ const URI = `mongodb+srv://${USER}:${PASSWORD}@${CLUSTER}.o4mj3pz.mongodb.net/?r
       useUnifiedTopology: true,
     });
     console.log('Conectado a MongoDB');
+    
   } catch (error) {
     console.error('Error al conectar a MongoDB:', error.message);
   }
