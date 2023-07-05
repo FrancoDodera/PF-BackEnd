@@ -1,8 +1,10 @@
 const express = require('express');
-const addNewUser= require('./controllers/AddUser')
 const app = express();
+const routes = require('./routes/index');
+const usersRouter = require('./routes/UsersRoute');
 
 // Configuración de middleware
+
 app.use(express.json());
 // // ... Otros middlewares
 
@@ -11,13 +13,9 @@ app.use(express.json());
 // app.use('/cars', carRoutes);
 // // ... Otras rutas
 
-app.post('/addUser',(req,res)=>{
-  addNewUser(req,res)
-})
+app.use('/', routes)
+app.use('/user',usersRouter)
 
-app.get('/',(req,res)=>{
-  return res.json({message:'DEPLOY'})
-})
 
 // Manejo de errores
 app.use((err, req, res, next) => {
