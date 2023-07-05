@@ -2,8 +2,6 @@ const express = require('express');
 const addNewUser= require('./controllers/AddUser')
 const app = express();
 
-
-
 // Configuración de middleware
 app.use(express.json());
 // // ... Otros middlewares
@@ -17,6 +15,9 @@ app.post('/addUser',(req,res)=>{
   addNewUser(req,res)
 })
 
+app.get('/',(req,res)=>{
+  return res.json({message:'DEPLOY'})
+})
 
 // Manejo de errores
 app.use((err, req, res, next) => {
