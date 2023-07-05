@@ -4,8 +4,8 @@ const{Router} =require('express')
 const app = Router()
 
 
-app.post('/addUser',(req,res)=>{
-    addNewUser(req,res)
+app.post('/addUser',async(req,res)=>{
+    await addNewUser(req,res)
 })
 
 

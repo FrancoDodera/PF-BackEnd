@@ -4,25 +4,21 @@ const addNewUser =async (req,res) =>{
     const {email,name,lastName,dni,user,password}=req.body
     
     const equalEmail = await User.findOne({email:email})
-    
-
-            
-            
 
         if(equalEmail) {
             
             if(equalEmail.password==password) return res.status(202).send({acces:true})
             else{
-                res.send('User found but wrong password')
+                return res.send('User found but wrong password')
             }
         }
        
        
-        if (!email)  res.status(400).send(`enter a email`)
-        if (!name)  res.status(400).send(`enter a name`)
-        if (!lastName)  res.status(400).send(`enter a lastName`)
-        if (!user)  res.status(400).send(`enter a user`)
-        if (!password)  res.status(400).send(`enter a password`)
+        if (!email)  return res.status(400).send(`enter a email`)
+        if (!name)  return res.status(400).send(`enter a name`)
+        if (!lastName) return res.status(400).send(`enter a lastName`)
+        if (!user) return res.status(400).send(`enter a user`)
+        if (!password) return res.status(400).send(`enter a password`)
         
 
     try {
@@ -42,8 +38,6 @@ const addNewUser =async (req,res) =>{
         console.log(error)
         return res.status(400).send('the user is not logged in')
     }
-    
-
 }
 
 module.exports= addNewUser
