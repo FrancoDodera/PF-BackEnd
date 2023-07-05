@@ -15,10 +15,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  dni: {
-    type: Number,
-    required:false,
-    unique:false
+  
+  dni:{
+    type:Number
   },
   user: {
     type: String,
