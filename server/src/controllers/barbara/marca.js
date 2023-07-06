@@ -22,7 +22,7 @@ const createMarca = async (data) => {
 
 //GET
 const getMarca = async (marca) => {
-  const marcas = await Marca.findOne({marca})
+  const marcas = await Marca.findOne({name:marca})
   return marcas;
 };
 
@@ -30,9 +30,11 @@ const getMarca = async (marca) => {
 const getMarcaById = async (id) => {
   const marca = await Marca.findById(id);
   if (marca) {
-    console.log("Id of the brand found:", marca);
+    return marca
+    // console.log("Id of the brand found:", marca);
   } else {
-    console.log("ID of the brand does not exist");
+    return "ID of the brand does not exist"
+    // console.log("ID of the brand does not exist");
   }
 };
 
@@ -62,9 +64,11 @@ const updateMarca = async (id, name, description) => {
 const deleteMarca = async (id) => {
   let deleted = await Marca.deleteOne({ _id: id });
     if (deleted) {
-        console.log("Brand deleted successfully", deleteMarca);
+      return "Brand deleted successfully"
+        // console.log("Brand deleted successfully", deleteMarca);
     } else {
-        console.log("Error deleting brand");
+      return "Error deleting brand"
+        // console.log("Error deleting brand");
     }
 }
 
