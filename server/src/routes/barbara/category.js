@@ -6,8 +6,12 @@ const {
   updateCategoryHandler,
   deleteCategoryHandler,
   getCategoryHandler,
+<<<<<<< HEAD
   getCategoriesHandler
 } = require("../handlers/category");
+=======
+} = require("../../handlers/barbara/category");
+>>>>>>> 33ea26ef314d1d3ef6c57765354adce5338d3b8a
 
 
 router.get("/", getCategoryHandler);

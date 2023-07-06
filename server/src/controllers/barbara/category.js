@@ -22,7 +22,7 @@ const createCategory = async (data) => {
 
 //GET
 const getCategory = async (category) => {
-  const categorys = await Category.findOne({ category });
+  const categorys = await Category.findOne({ name:category });
   return categorys;
 };
 
@@ -37,9 +37,11 @@ const getCategories = async () => {
 const getCategoryById = async (id) => {
   const category = await Category.findById(id);
   if (category) {
-    console.log("Id of the category found:", category);
+    return category
+    // console.log("Id of the category found:", category);
   } else {
-    console.log("The ID of the category does not exist");
+    throw new Error('The ID of the category does not exist')
+    // console.log("The ID of the category does not exist");
   }
 };
 
@@ -68,9 +70,11 @@ const updateCategory = async (id, name, description) => {
 const deleteCategory = async (id) => {
   let deleted = await Category.deleteOne({ _id: id });
   if (deleted) {
-    console.log("Category deleted successfully", deleted);
+    return "Category deleted successfully"
+    // console.log("Category deleted successfully", deleted);
   } else {
-    console.log("Error deleting category");
+    return "Error deleting category"
+    // console.log("Error deleting category");
   }
 };
 
