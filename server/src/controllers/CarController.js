@@ -15,7 +15,7 @@ const getCarById = async (id) => {
     return car
 }
 const getCarByName = async (name) => {
-    const car = await CarModel.find({name: name})
+    const car = await CarModel.findOne({name: name})
     return car
 }
 module.exports = {
