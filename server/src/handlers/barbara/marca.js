@@ -4,10 +4,7 @@ const {
   getMarcaById,
   updateMarca,
   deleteMarca,
-<<<<<<< HEAD
   getMarcas,
-=======
->>>>>>> 33ea26ef314d1d3ef6c57765354adce5338d3b8a
 } = require("../../controllers/barbara/marca");
 
 
