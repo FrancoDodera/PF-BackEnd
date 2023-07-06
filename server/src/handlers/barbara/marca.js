@@ -4,7 +4,7 @@ const {
   getMarcaById,
   updateMarca,
   deleteMarca,
-} = require("../controllers/barbara/marca");
+} = require("../../controllers/barbara/marca");
 
 
 const createMarcaHandler = async (req, res) => {
