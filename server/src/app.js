@@ -1,5 +1,6 @@
 const express = require('express');
 const addNewUser= require('./controllers/AddUser')
+const carRoutes = require('./routes/CarsRoutes')
 const app = express();
 
 // Configuración de middleware
@@ -18,6 +19,8 @@ app.post('/addUser',(req,res)=>{
 app.get('/',(req,res)=>{
   return res.json({message:'DEPLOY'})
 })
+
+app.use('/cars', carRoutes)
 
 // Manejo de errores
 app.use((err, req, res, next) => {

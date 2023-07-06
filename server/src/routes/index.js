@@ -9,5 +9,4 @@ app.get('/',(req,res)=>{
     return res.json({message:'DEPLOY'})
 })
 
-
 module.exports= app
