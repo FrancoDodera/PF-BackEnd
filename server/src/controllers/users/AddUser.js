@@ -6,7 +6,7 @@ const addNewUser =async (req,res) =>{
     const equalEmail = await User.findOne({email:email})
 
         if(equalEmail) {
-            
+            if (equalEmail.status===false) return res.status(200).send('inactive user')
             if(equalEmail.password==password) return res.status(202).send({acces:true})
             else{
                 return res.send('User found but wrong password')
