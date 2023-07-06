@@ -26,6 +26,13 @@ const getCategory = async (category) => {
   return categorys;
 };
 
+
+//GET
+const getCategories = async () => {
+  const categories = await Category.find();
+  return categories;
+};
+
 //GET
 const getCategoryById = async (id) => {
   const category = await Category.findById(id);
@@ -70,6 +77,7 @@ const deleteCategory = async (id) => {
 module.exports = {
   getCategory,
   getCategoryById,
+  getCategories,
   createCategory,
   updateCategory,
   deleteCategory,

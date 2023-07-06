@@ -2,10 +2,10 @@ const {
   createCategory,
   getCategory,
   getCategoryById,
-  getCategoryByName,
+  getCategories,
   updateCategory,
   deleteCategory,
-} = require("../controllers/barbara/category");
+} = require("../../controllers/barbara/category");
 
 const createCategoryHandler = async (req, res) => {
   const payload = req.body;
@@ -17,6 +17,14 @@ const createCategoryHandler = async (req, res) => {
   }
 };
 
+const getCategoriesHandler = async (req, res) => {
+ try {
+  let result = await getCategories();
+  return res.status(200).json(result);
+ } catch (error) {
+  return res.status(400).json({ error: error.message });
+ }
+}
 
 const getCategoryHandler = async (req, res) => {
   const { name } = req.query;
@@ -60,10 +68,12 @@ const deleteCategoryHandler = async (req, res) => {
   }
 };
 
+
 module.exports = {
   createCategoryHandler,
   getCategoryByIdHandler,
+  getCategoriesHandler,
+  getCategoryHandler,
   updateCategoryHandler,
   deleteCategoryHandler,
-  getCategoryHandler,
 };

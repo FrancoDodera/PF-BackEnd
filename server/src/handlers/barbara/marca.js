@@ -4,7 +4,8 @@ const {
   getMarcaById,
   updateMarca,
   deleteMarca,
-} = require("../controllers/barbara/marca");
+  getMarcas,
+} = require("../../controllers/barbara/marca");
 
 
 const createMarcaHandler = async (req, res) => {
@@ -38,6 +39,16 @@ const getMarcaByIdHandler = async (req, res) => {
   }
 };
 
+const getMarcasHandler = async (req, res) => {
+  try {
+   let result = await getMarcas();
+   return res.status(200).json(result);
+  } catch (error) {
+   return res.status(400).json({ error: error.message });
+  }
+}
+
+
 const updateMarcaHandler = async (req, res) => {
   const { id } = req.params;
   const { name, description } = req.body;
@@ -64,6 +75,7 @@ module.exports = {
   createMarcaHandler,
   getMarcaHandler,
   getMarcaByIdHandler,
+  getMarcasHandler,
   updateMarcaHandler,
   deleteMarcaHandler,
 };
