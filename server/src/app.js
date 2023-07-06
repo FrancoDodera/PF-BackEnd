@@ -1,15 +1,31 @@
 const express = require('express');
+const addNewUser= require('./controllers/AddUser')
 const app = express();
-const bodyParser = require('body-parser');
+
+const routes = require('./routes/index');
+const usersRouter = require('./routes/UsersRoute');
 const categoryRouter = require('./routes/category.js');
 const marcaRouter = require('./routes/marca.js')
+// Configuración de middleware
 
-app.use(bodyParser.json());
 app.use(express.json());
+// // ... Otros middlewares
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
 
+
+
+app.use('/', routes)
+app.use('/user',usersRouter)
 app.use ('/marca', marcaRouter);
 app.use('/category', categoryRouter);
 
+app.use('/cars', carRoutes)
 
 // Manejo de errores
 app.use((err, req, res, next) => {
