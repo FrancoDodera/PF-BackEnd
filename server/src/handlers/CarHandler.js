@@ -1,4 +1,4 @@
-const {getAllCars, getCarById, getCarByName} = require('../controllers/CarController')
+const { getAllCars, getCarById, getCarByName} = require('../controllers/CarController')
 
 const getAllCarsHandler = async (req, res) => {
     try {
