@@ -7,7 +7,6 @@ const setCarsBDD = async () => {
 }
 const getAllCars = async () => {
     const cars = await CarModel.find()
-    console.log(cars);
     return cars
 }
 const getCarById = async (id) => {
