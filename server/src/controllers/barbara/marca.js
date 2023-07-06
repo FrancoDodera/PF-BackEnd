@@ -20,13 +20,13 @@ const createMarca = async (data) => {
   }
 };
 
-//GET
+//GET MARCA
 const getMarca = async (marca) => {
   const marcas = await Marca.findOne({name:marca})
   return marcas;
 };
 
-//GET
+//GET BY ID
 const getMarcaById = async (id) => {
   const marca = await Marca.findById(id);
   if (marca) {
@@ -37,6 +37,14 @@ const getMarcaById = async (id) => {
     // console.log("ID of the brand does not exist");
   }
 };
+
+
+//GET ALL
+const getMarcas = async () => {
+  const marcas = await Marca.find();
+  return marcas;
+};
+
 
 //UPDATE
 const updateMarca = async (id, name, description) => {
@@ -77,6 +85,7 @@ module.exports = {
   createMarca,
   getMarca,
   getMarcaById,
+  getMarcas,
   updateMarca,
   deleteMarca,
 }
