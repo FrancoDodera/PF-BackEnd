@@ -1,11 +1,11 @@
 const express = require('express');
-const addNewUser= require('./controllers/AddUser')
-const app = express();
 
+const app = express();
+const carRoutes = require('./routes/CarsRoutes')
 const routes = require('./routes/index');
 const usersRouter = require('./routes/UsersRoute');
-const categoryRouter = require('./routes/category.js');
-const marcaRouter = require('./routes/marca.js')
+const categoryRouter = require('./routes/barbara/category');
+const marcaRouter = require('./routes/barbara/marca')
 // Configuración de middleware
 
 app.use(express.json());
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 
 
 
-app.use('/', routes)
+
 app.use('/user',usersRouter)
 app.use ('/marca', marcaRouter);
 app.use('/category', categoryRouter);
