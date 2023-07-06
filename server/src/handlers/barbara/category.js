@@ -2,7 +2,6 @@ const {
   createCategory,
   getCategory,
   getCategoryById,
-  getCategoryByName,
   updateCategory,
   deleteCategory,
 } = require("../controllers/barbara/category");
