@@ -7,8 +7,13 @@ const setCarsBDD = async () => {
 }
 const getAllCars = async () => {
     const cars = await CarModel.find()
-    console.log(cars);
-    return cars
+    if(cars.length>0){
+        return cars
+    }
+    await setCarsBDD();
+    const result = await CarModel.find()
+    return result
+    
 }
 const getCarById = async (id) => {
     const car = await CarModel.findById(id)
