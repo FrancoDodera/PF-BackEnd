@@ -5,7 +5,7 @@ const {
   getCategoryByName,
   updateCategory,
   deleteCategory,
-} = require("../controllers/category");
+} = require("../controllers/barbara/category");
 
 const createCategoryHandler = async (req, res) => {
   const payload = req.body;

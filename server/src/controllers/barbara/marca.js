@@ -1,5 +1,5 @@
 require("dotenv").config();
-const Marca = require("../models/marca");
+const Marca = require("../../models/marca");
 
 //POST
 const createMarca = async (data) => {
