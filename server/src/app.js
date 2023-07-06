@@ -1,14 +1,15 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const categoryRouter = require('./routes/category.js');
+const marcaRouter = require('./routes/marca.js')
 
-// Configuración de middleware
-// app.use(express.json());
-// // ... Otros middlewares
+app.use(bodyParser.json());
+app.use(express.json());
 
-// // Rutas
-// const carRoutes = require('./routes/carRoutes');
-// app.use('/cars', carRoutes);
-// // ... Otras rutas
+app.use ('/marca', marcaRouter);
+app.use('/category', categoryRouter);
+
 
 // Manejo de errores
 app.use((err, req, res, next) => {

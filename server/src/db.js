@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 
-const URI = 'mongodb://127.0.0.1:27017/carDB'
+const {PASSWORD, USER, CLUSTER } = process.env;
+const URI = `mongodb+srv://${USER}:${PASSWORD}@${CLUSTER}.o4mj3pz.mongodb.net/?retryWrites=true&w=majority`
 
-// mongoose.connect(URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// })
 
 const connectToMongoDB = async () => {
   try {
