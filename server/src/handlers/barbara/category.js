@@ -3,6 +3,7 @@ const {
   getCategory,
   getCategoryById,
   getCategories,
+
   updateCategory,
   deleteCategory,
 } = require("../../controllers/barbara/category");
