@@ -3,6 +3,7 @@ const DeleteUserHandler =require('../handlers/Users/DeleteUserHandler')
 const GetAllUserHandler=require('../handlers/Users/GetAllUsersHandler')
 const GetUsersHandler=require('../handlers/Users/GetUsersHandler')
 const RenoveUserHandler=require('../handlers/Users/RenoveUsersHandler')
+const VerifyUser=require('../handlers/Users/VerifyUser')
 const{Router} =require('express')
 const app = Router()
 
@@ -26,14 +27,14 @@ app.get('/getUsers',(req,res)=>{
     GetUsersHandler(req,res)
 })
 
-
 //obtener todos los usuarios
 app.get('/getAllUsers', (req,res)=>{
     GetAllUserHandler(req,res)
 })
 
-
-
-
+//validar login con email
+app.post('/verifyUser',(req,res)=>{
+    VerifyUser(req,res)
+})
 
 module.exports=app
