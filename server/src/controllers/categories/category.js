@@ -1,5 +1,5 @@
 require("dotenv").config();
-const Category = require("../../models/category");
+const Category = require("../../models/CategoryModel");
 
 //POST
 const createCategory = async (data) => {

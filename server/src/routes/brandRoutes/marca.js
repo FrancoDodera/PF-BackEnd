@@ -6,7 +6,7 @@ const {
   deleteMarcaHandler,
   getMarcaHandler,
   getMarcasHandler,
-} = require("../../handlers/barbara/marca");
+} = require("../../handlers/brandsHandler/brandHandler");
 
 const marcaRouter = Router();
 
