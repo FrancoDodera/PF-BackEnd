@@ -1,8 +1,8 @@
 const User = require("../../models/Users")
 
-const verifyUser=async({email})=>{
+const verifyUser=async({user})=>{
     try {
-        const document=await User.findOne({email:email})
+        const document=await User.findOne({user:user})
         if(document){
             return {acces:true,data:document}
         }

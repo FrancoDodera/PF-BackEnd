@@ -4,6 +4,7 @@ const GetAllUserHandler=require('../handlers/Users/GetAllUsersHandler')
 const GetUsersHandler=require('../handlers/Users/GetUsersHandler')
 const RenoveUserHandler=require('../handlers/Users/RenoveUsersHandler')
 const VerifyUser=require('../handlers/Users/VerifyUser')
+const LoginUser=require('../handlers/Users/LoginUser')
 const{Router} =require('express')
 const app = Router()
 
@@ -36,5 +37,10 @@ app.get('/getAllUsers', (req,res)=>{
 app.post('/verifyUser',(req,res)=>{
     VerifyUser(req,res)
 })
+//login
+app.post('/login',(req,res)=>{
+    LoginUser(req,res)
+})
+
 
 module.exports=app
