@@ -2,8 +2,8 @@ const data = [
   {
     id: 1,
     amount: 1,
-    category: "Sedán",
-    marca: "BMW",
+    idCategory:"64a85dea137449c76b1d8d01",
+    idMarca: "64a85d67137449c76b1d8cf8",
     name: "BMW Serie 7 Sedán",
     age: "2021",
     color: [
@@ -13,7 +13,7 @@ const data = [
       "Mineral White",
       "Thundernight",
     ],
-    price: "US$59,900",
+    price:59.900,
     transmission: "Automatic",
     description:
       "El BMW Serie 7 Sedan es un automóvil de lujo de alto rendimiento con un diseño imponente. Combina materiales de alta calidad y tecnología avanzada para brindar una experiencia de conducción lujosa y confortable. Con motores potentes y características de seguridad destacadas, es una elección excepcional en el segmento de sedanes de lujo.",
@@ -23,12 +23,12 @@ const data = [
   {
     id: 2,
     amount: 1,
-    category: "Cabriolet",
-    marca: "BMW",
+    idCategory: "64a85f29fbfac210aebe1e9a",
+    idMarca: "64a85d67137449c76b1d8cf8",
     name: "BMW Z4 Roadster",
     age: "2023",
     color: "",
-    price: "US$117,400",
+    price: 117.400,
     transmission: "Automatic",
     description:
       "El BMW Z4 es un deportivo descapotable biplaza fabricado por BMW, de propulsión trasera y motores turboalimentados de cuatro y seis cilindros, con potencias entre 197 y 340 CV. Actualmente se comercializa la tercera generación del modelo, que fue originalmente lanzado al mercado en 2003.",
@@ -38,8 +38,8 @@ const data = [
   {
     id: 3,
     amount: 1,
-    category: "SUV",
-    marca: "BMW",
+    idCategory: "64a85de1137449c76b1d8cff",
+    idMarca: "64a85d67137449c76b1d8cf8",
     name: "BMW X6 M",
     age: "2022",
     color: [
@@ -57,7 +57,7 @@ const data = [
       "BMW Individual Tanzanite Blue metalizado",
       "BMW Individual Ametrin metalizado",
     ],
-    price: "US$104,500",
+    price: 104.500,
     transmission: "Automatic",
     description:
       "El BMW X6 M es un SUV deportivo de alto rendimiento con un diseño audaz y elegante. Con su potente motor y tracción en las cuatro ruedas, ofrece una conducción emocionante. Su interior lujoso y tecnología avanzada brindan comodidad y entretenimiento de primer nivel. Una combinación perfecta de lujo y deportividad.",
@@ -67,8 +67,8 @@ const data = [
   {
     id: 4,
     amount: 1,
-    category: "Coupé",
-    marca: "BMW",
+    idCategory: "64a85e09137449c76b1d8d03",
+    idMarca: "64a85d67137449c76b1d8cf8",
     name: "BMW Serie 2 Coupé",
     age: "2023",
     color: [
@@ -78,7 +78,7 @@ const data = [
       "Mineral White",
       "Thundernight",
     ],
-    price: "US$64,900",
+    price: 64.900,
     transmission: "Automatic",
     description:
       "El BMW Serie 2 Coupé es un automóvil compacto y deportivo con un diseño dinámico y elegante. Con su potente motor, tracción trasera y agilidad excepcional, ofrece una experiencia de conducción emocionante. Su interior de alta calidad y tecnología avanzada garantizan comodidad y conectividad de primer nivel. La combinación perfecta de estilo y rendimiento.",
@@ -88,12 +88,12 @@ const data = [
   {
     id: 5,
     amount: 1,
-    category: "Sedán",
-    marca: "BMW",
+    idCategory: "64a85dea137449c76b1d8d01",
+    idMarca: "64a85d67137449c76b1d8cf8",
     name: "BMW Serie 4",
     age: "2023",
     color: "",
-    price: "US$101,900",
+    price: 101.900,
     transmission: "Automatic",
     description:
       "El BMW Serie 4 es un automóvil deportivo y elegante con un diseño audaz y distintivo. Con su potente rendimiento, tecnología de vanguardia y comodidades de lujo, ofrece una experiencia de conducción emocionante. Su estilo aerodinámico y detalles sofisticados hacen del Serie 4 un vehículo impresionante en todos los sentidos.",
@@ -103,12 +103,12 @@ const data = [
   {
     id: 6,
     amount: 1,
-    category: "SUV",
-    marca: "Honda",
+    idCategory: "64a85de1137449c76b1d8cff",
+    idMarca: "64a85fd2fbfac210aebe1e9c",
     name: "Honda CR-V",
     age: "2022",
     color: "",
-    price: "95.990",
+    price: 95.990,
     transmission: "Electric",
     description:
       "El Honda CR-V es un SUV mediano, del segmento C, fabricado por Honda desde el año 1996. Actualmente se comercializa la quinta generación, que fue presentada en 2017 y actualizada en 2021 con cambios estéticos y con novedades también en su equipamiento tecnológico.",
@@ -119,12 +119,12 @@ const data = [
   {
     id: 7,
     amount: 1,
-    category: "Minivan",
-    marca: "Honda",
+    idCategory: "64a8600efbfac210aebe1e9e",
+    idMarca: "64a85fd2fbfac210aebe1e9c",
     name: "Honda Jazz",
     age: "2020",
     color: "",
-    price: "90.990",
+    price: 90.990,
     transmission: "Hibrid",
     description:
       "Muestra una imagen moderna y juvenil, pero con líneas llamativas como en otros modelos del segmento B",
@@ -134,12 +134,12 @@ const data = [
   {
     id: 8,
     amount: 1,
-    category: "Tourism",
-    marca: "Peugeot",
+    idCategory: "64a86355bf2d1bc03f0ac926",
+    idMarca: "64a86367bf2d1bc03f0ac928",
     name: "Peugeot 508 Sport Engineered 2021",
     age: "2021",
     color: "",
-    price: "90.990",
+    price: 90.990,
     transmission: "Hibrid",
     description:
       "El Peugeot 508 Sport Engineered ha sido presentado en sociedad como modelo de producción, y sigue siendo un coche híbrido enchufable con un marcado carácter deportivo",
@@ -149,12 +149,12 @@ const data = [
   {
     id: 9,
     amount: 1,
-    category: "SUV",
-    marca: "Jeep",
+    idCategory: "64a85de1137449c76b1d8cff",
+    idMarca: "64a85ecc137449c76b1d8d05",
     name: "Jeep Avenger",
     age: "2023",
     color: "",
-    price: "150.090",
+    price: 150.090,
     transmission: "Hibrid",
     description: "El Jeep Avenger es un SUV del segmento B, fabricado por el constructor norteamericano Jeep desde 2022.",
     image: "https://fotos.perfil.com/2022/09/08/trim/1280/720/jeep-avenger-1416036.jpg",
@@ -162,15 +162,18 @@ const data = [
   {
     id: 10,
     amount: 1,
-    category: "Tourism",
-    marca: "Audi",
+    idCategory: "64a86355bf2d1bc03f0ac926",
+    idMarca: "64a85d75137449c76b1d8cfa",
     name: "Audi S8",
     age: "2022",
     color: "",
-    price: "100.090",
+    price: 100.090,
     transmission: "Automatic",
     description: "El Audi A8 es un automóvil de turismo de lujo del segmento F producido por el fabricante alemán Audi desde el año 1994.",
     image: "https://soymotor.com/sites/default/files/styles/watermark_wide_960/public/imagenes/noticia/audi-s8-2022-principal-soymotor.jpg.webp?itok=wct5Lggv",
-  },
+  }
+  
 ];
 module.exports = data;
+
+
