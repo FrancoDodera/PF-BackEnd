@@ -11,7 +11,7 @@ const {
 const marcaRouter = Router();
 
 marcaRouter.get("/", getMarcaHandler);
-marcaRouter.get("/", getMarcasHandler);
+marcaRouter.get("/all", getMarcasHandler);
 marcaRouter.post("/", createMarcaHandler);
 marcaRouter.get("/:id", getMarcaByIdHandler);
 marcaRouter.put("/:id", updateMarcaHandler);

@@ -8,6 +8,7 @@ const carSchema = new mongoose.Schema({
     age: Number,
     color: [String],
     price: Number,
+    status:String,
     transmission: String,
     description: String,
     image: String,
