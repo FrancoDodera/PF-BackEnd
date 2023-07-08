@@ -6,6 +6,7 @@ const RenoveUserHandler=require('../handlers/usersHandler/renoveUsersHandler')
 const VerifyUser=require('../handlers/usersHandler/verifyUser')
 const GetUserByIdHandler= require('../handlers/usersHandler/GetUserByIdHandler')
 const uptadeUser=require('../handlers/Users/UptadeUserHandler')
+const loginUser=require('../handlers/usersHandler/loginUser');
 const{Router} =require('express')
 const app = Router()
 
@@ -37,6 +38,10 @@ app.get('/getAllUsers', (req,res)=>{
 //validar login con email
 app.post('/verifyUser',(req,res)=>{
     VerifyUser(req,res)
+})
+//login con password y user
+app.post('/login',(req,res)=>{
+    loginUser(req,res)
 })
 
 
