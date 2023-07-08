@@ -1,4 +1,4 @@
-const {getAllCarsHandler, getCarByIdHandler, getCarByNameHandler} = require('../handlers/CarHandler')
+const {getAllCarsHandler, getCarByIdHandler, getCarByNameHandler} = require('../../handlers/carsHandler/CarHandler')
 const {Router} = require('express')
 const app = Router()
 

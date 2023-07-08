@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 
 const carSchema = new mongoose.Schema({
     amount: Number,
-    category: String,
-    marca: String,
+    idCategory: String,
+    idMarca: String,
     name: String,
     age: Number,
     color: [String],
-    price: String,
+    price: Number,
+    status:String,
     transmission: String,
     description: String,
     image: String,
