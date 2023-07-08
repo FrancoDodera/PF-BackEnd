@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
   status:{
     type: Boolean,
     default: true
+  },
+  image:{
+    type:String,
+    default:'colocar una imagen'
   }
 });
 
