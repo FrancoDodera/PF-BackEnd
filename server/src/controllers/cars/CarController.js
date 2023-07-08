@@ -20,6 +20,7 @@ const cleanArray = async (cars) => {
                 name: marca.name
             },
             name: car.name,
+            status:car.status,
             age: car.age,
             color: car.color,
             price: car.price,
@@ -62,6 +63,7 @@ const getCarById = async (id) => {
         },
         name: car.name,
         age: car.age,
+        status:car.status,
         color: car.color,
         price: car.price,
         transmission: car.transmission,
