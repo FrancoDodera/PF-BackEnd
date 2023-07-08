@@ -47,7 +47,28 @@ const getAllCars = async () => {
 }
 const getCarById = async (id) => {
     const car = await CarModel.findById(id)
-    return car
+    const category = await Category.findById(car.idCategory);
+    const marca = await Marca.findById(car.idMarca);
+    const updatedCar = {
+        _id: car._id,
+        amount: car.amount,
+        idCategory: {
+            _id: category._id,
+            name: category.name
+        },
+        idMarca: {
+            _id: marca._id,
+            name: marca.name
+        },
+        name: car.name,
+        age: car.age,
+        color: car.color,
+        price: car.price,
+        transmission: car.transmission,
+        description: car.description,
+        image: car.image
+    };
+    return updatedCar
 }
 const getCarByName = async (name) => {
     const car = await CarModel.findOne({name: name})
