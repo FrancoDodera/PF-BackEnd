@@ -75,10 +75,12 @@ const getCarById = async (id) => {
 const getCarByName = async (name) => {
     if(name== ""){
         const car = await CarModel.find()
-        return car
+        const updatedCar =await cleanArray(car)
+        return updatedCar
     }
     const car = await CarModel.find({ name: { $regex: name, $options: 'i' } })
-    return car
+    const updatedCar =await cleanArray(car)
+    return updatedCar
 }
 module.exports = {
     setCarsBDD,
