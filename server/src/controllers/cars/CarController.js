@@ -73,6 +73,10 @@ const getCarById = async (id) => {
     return updatedCar
 }
 const getCarByName = async (name) => {
+    if(name== ""){
+        const car = await CarModel.find()
+        return car
+    }
     const car = await CarModel.find({ name: { $regex: name, $options: 'i' } })
     return car
 }
