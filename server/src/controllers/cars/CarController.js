@@ -4,32 +4,34 @@ const Category = require('../../models/CategoryModel.js')
 const Marca = require('../../models/MarcaModel.js')
 
 const cleanArray = async (cars) => {
-    const updatedCars = [];
-    for (const car of cars) {
-        const category = await Category.findById(car.idCategory);
-        const marca = await Marca.findById(car.idMarca);
-        const updatedCar = {
-            _id: car._id,
-            amount: car.amount,
-            idCategory: {
-                _id: category._id,
-                name: category.name
-            },
-            idMarca: {
-                _id: marca._id,
-                name: marca.name
-            },
-            name: car.name,
-            status:car.status,
-            age: car.age,
-            color: car.color,
-            price: car.price,
-            transmission: car.transmission,
-            description: car.description,
-            image: car.image
-        };
-        updatedCars.push(updatedCar);
-    }
+        const updatedCars = [];
+        await Promise.all(
+            cars.map(async(car)=>{
+                const category = await Category.findById(car.idCategory);
+                const marca = await Marca.findById(car.idMarca);
+                const updatedCar = {
+                            _id: car._id,
+                            amount: car.amount,
+                            idCategory: {
+                                _id: category._id,
+                                name: category.name
+                            },
+                            idMarca: {
+                                _id: marca._id,
+                                name: marca.name
+                            },
+                            name: car.name,
+                            status:car.status,
+                            age: car.age,
+                            color: car.color,
+                            price: car.price,
+                            transmission: car.transmission,
+                            description: car.description,
+                            image: car.image
+                        };
+                        updatedCars.push(updatedCar);
+                })
+        )
     return updatedCars;
 };  
 const setCarsBDD = async () => {
