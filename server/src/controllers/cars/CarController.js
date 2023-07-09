@@ -73,7 +73,7 @@ const getCarById = async (id) => {
     return updatedCar
 }
 const getCarByName = async (name) => {
-    const car = await CarModel.findOne({name: name})
+    const car = await CarModel.find({ name: { $regex: name, $options: 'i' } })
     return car
 }
 module.exports = {
