@@ -9,7 +9,7 @@ const marcaRouter = require('./routes/brandRoutes/marca')
 const reviewsRoutes = require('./routes/reviewsRoute')
 const favoritesRoutes =require('./routes/favoriteRoutes')
 const paymentsRoutes = require('./routes/paymentsRoutes/paymentsRoutes')
-
+const saledetail =require('./routes/saleDetail')
 // Configuración de middleware
 
 app.use(express.json());
@@ -30,6 +30,7 @@ app.use('/marca', marcaRouter);
 app.use('/category', categoryRouter);
 app.use('/payments', paymentsRoutes);
 app.use('/cars', carRoutes)
+app.use('/detail',saledetail)
 
 // Manejo de errores
 app.use((err, req, res, next) => {

@@ -1,5 +1,8 @@
-const {getAllCarsHandler, getCarByIdHandler, getCarByNameHandler, postCarhandeler, deleteCarHandler} = require('../../handlers/carsHandler/CarHandler')
+
+
+const {getAllCarsHandler, getCarByIdHandler, getCarByNameHandler, postCarhandeler, deleteCarHandler, updateCarHandler} = require('../../handlers/carsHandler/CarHandler')
 // const {deleteCar} = require('../../controllers/cars/CarController')
+
 const {Router} = require('express')
 const app = Router()
 
@@ -10,5 +13,8 @@ app.delete('/:id', deleteCarHandler)
 
 //publicar un auto
 app.post('/addCar', postCarhandeler)
+
+//editar un auto
+app.put('/updateCar', updateCarHandler)
 
 module.exports = app 
