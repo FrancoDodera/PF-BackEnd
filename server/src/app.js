@@ -10,6 +10,7 @@ const reviewsRoutes = require('./routes/reviewsRoute')
 const favoritesRoutes =require('./routes/favoriteRoutes')
 const paymentsRoutes = require('./routes/paymentsRoutes/paymentsRoutes')
 const saledetail =require('./routes/saleDetail')
+const sale = require('./routes/saleRoutes/saleRoutes')
 // Configuración de middleware
 
 app.use(express.json());
@@ -31,6 +32,7 @@ app.use('/category', categoryRouter);
 app.use('/payments', paymentsRoutes);
 app.use('/cars', carRoutes)
 app.use('/detail',saledetail)
+app.use('/sale', sale)
 
 // Manejo de errores
 app.use((err, req, res, next) => {

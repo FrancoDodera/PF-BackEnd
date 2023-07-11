@@ -1,8 +1,4 @@
-
-
 const {getAllCarsHandler, getCarByIdHandler, getCarByNameHandler, postCarhandeler, deleteCarHandler, updateCarHandler} = require('../../handlers/carsHandler/CarHandler')
-// const {deleteCar} = require('../../controllers/cars/CarController')
-
 const {Router} = require('express')
 const app = Router()
 
