@@ -1,4 +1,5 @@
 require("dotenv").config();
+const Car = require("../../models/CarModel");
 const Category = require("../../models/CategoryModel");
 
 //POST
@@ -68,6 +69,15 @@ const updateCategory = async (id, name, description) => {
 
 //DELETE
 const deleteCategory = async (id) => {
+  const exist = await Car.findOne({idCategory:id})
+  if (exist) {
+    if (exist.active===true) {
+    return 'the category is associated with a car'
+  }
+  }
+  
+
+
   let deleted = await Category.deleteOne({ _id: id });
   if (deleted) {
     return "Category deleted successfully"
