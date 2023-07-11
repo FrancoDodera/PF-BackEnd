@@ -17,8 +17,6 @@ const addNewUser =async (req,res) =>{
         if (!lastName) return res.status(400).send(`enter a lastName`)
         if (!user) return res.status(400).send(`enter a user`)
         if (!password) return res.status(400).send(`enter a password`)
-        
-
     try {
         const newUser = new User({
             email:email,

@@ -72,7 +72,7 @@ const deleteCategory = async (id) => {
   const exist = await Car.findOne({idCategory:id})
   if (exist) {
     if (exist.active===true) {
-    return 'the category is associated with a car'
+    return ({deleted:false,message:'the category is associated with a car'})
   }
   }
   
@@ -80,10 +80,10 @@ const deleteCategory = async (id) => {
 
   let deleted = await Category.deleteOne({ _id: id });
   if (deleted) {
-    return "Category deleted successfully"
+    return ({deleted:true,message:'Category deleted successfully'})
     // console.log("Category deleted successfully", deleted);
   } else {
-    return "Error deleting category"
+    return ({deleted:false,message:'Error deleting category'})
     // console.log("Error deleting category");
   }
 };

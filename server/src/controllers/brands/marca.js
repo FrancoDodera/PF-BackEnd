@@ -77,15 +77,15 @@ const deleteMarca = async (id) => {
   
   if (cars[0]) {
     if (cars[0].active===true) {
-      return('this brand is related to a car')
+      return({deleted:false,message:'this brand is related to a car'})
     }
   }
   let deleted = await Marca.deleteOne({ _id: id });
     if (deleted) {
-      return "Brand deleted successfully"
+      return ({deleted:true,message:'Brand deleted successfully'})
         // console.log("Brand deleted successfully", deleteMarca);
     } else {
-      return "Error deleting brand"
+      return ({deleted:false ,message:'Error deleting brand'})
         // console.log("Error deleting brand");
     }
 }
