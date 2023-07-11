@@ -124,10 +124,17 @@ const postCar=async(req,res)=>{
 
 
 }
+const deleteCar = async (id) => {
+    const cars = await CarModel.find();
+    const remainingCars = cars.filter(car => car._id.toString() != id);
+    console.log(remainingCars);
+    return remainingCars;
+};
 module.exports = {
     setCarsBDD,
     getAllCars,
     getCarById,
     getCarByName,
-    postCar
+    postCar,
+    deleteCar
 }
