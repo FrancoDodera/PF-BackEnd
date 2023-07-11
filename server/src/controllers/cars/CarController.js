@@ -120,14 +120,37 @@ const postCar=async(req,res)=>{
     } catch (error) {
         return res.status(404).send(error)
     }
-    
-
 
 }
+const updateCar= async (info)=>{
+    const {id,amount,idCategory,idMarca,name,age,color,status,price,transmission,description,image}=info
+
+    try {
+        if (amount>0) await CarModel.updateOne({_id:id},{amount:amount})
+        if (idCategory.length>0) await CarModel.updateOne({_id:id},{idCategory:idCategory})
+        if (idMarca.length>0) await CarModel.updateOne({_id:id},{idMarca:idMarca})
+        if (name.length>0) await CarModel.updateOne({_id:id},{name:name})
+        if (typeof age==='number'&&age>0) await CarModel.updateOne({_id:id},{age:age})
+        if (color.length>0) await CarModel.updateOne({_id:id},{color:color})
+        if (typeof price==='number'&& price>0) await CarModel.updateOne({_id:id},{price:price})
+        if ( transmission.length>0) await CarModel.updateOne({_id:id},{transmission:transmission})
+        if ( description.length>0) await CarModel.updateOne({_id:id},{description:description})
+        if ( image.length>0) await CarModel.updateOne({_id:id},{image:image})
+        if ( status.length>0) await CarModel.updateOne({_id:id},{status:status})
+
+    } catch (error) {
+        throw error
+    }
+
+}
+
+
+
 module.exports = {
     setCarsBDD,
     getAllCars,
     getCarById,
     getCarByName,
-    postCar
+    postCar,
+    updateCar
 }

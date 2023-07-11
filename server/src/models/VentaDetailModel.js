@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-    const ventaDetailSchema = new mongoose.Schema({
+    const SaleDetailSchema = new mongoose.Schema({
     id_venta:{
         type:String
     },
@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
         type:String
     },
     
-    total:{
+    amount:{
         type: Number
     },
     subtotal:{
@@ -21,6 +21,6 @@ const mongoose = require('mongoose');
 
 })
 
-const VentaDetail = mongoose.model('VentaDetail', ventaDetailSchema);
+const SaleDetail = mongoose.model('SaleDetail', SaleDetailSchema);
 
-module.exports= VentaDetail
+module.exports= SaleDetail

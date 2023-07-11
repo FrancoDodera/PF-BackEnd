@@ -1,4 +1,4 @@
-const { getAllCars, getCarById, getCarByName, postCar} = require('../../controllers/cars/CarController')
+const { getAllCars, getCarById, getCarByName, postCar, updateCar} = require('../../controllers/cars/CarController')
 
 const getAllCarsHandler = async (req, res) => {
     try {
@@ -31,10 +31,20 @@ const postCarhandeler = async (req,res)=>{
     const carPosted= postCar(req,res)
 }
 
+const updateCarHandler = async(req,res)=>{
+    try {
+         updateCar(req.body)
+        return res.status(200).send('the car is modified successfully')
+    } catch (error) {
+        return res.status(404).send(error)
+    }
+    
+}
+
 module.exports = {
     getAllCarsHandler,
     getCarByIdHandler,
     getCarByNameHandler,
-    postCarhandeler
-    
+    postCarhandeler,
+    updateCarHandler
 }
