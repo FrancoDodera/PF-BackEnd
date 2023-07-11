@@ -84,9 +84,57 @@ const getCarByName = async (name) => {
     const updatedCar =await cleanArray(car)
     return updatedCar
 }
+
+const postCar=async(req,res)=>{
+    try {
+        
+        const {amount,idCategory,idMarca,name,age,color,price,transmission,description,image}=req.body
+
+        
+        if (amount===0 || typeof amount !=="number") return res.status(400).send('you must put an amount');
+        if (idCategory.length===0) return res.status(400).send('you must put a category');
+        if (idMarca.length===0) return res.status(400).send('you must place a mark');
+        if (name.length===0) return res.status(400).send('you must put a name');
+        if (age===0 || typeof age !=="number") return res.status(400).send('you must put a year');
+        if (color.length===0) return res.status(400).send('you must put at least one color');
+        if (price.length===0) return res.status(400).send('you must put at least one price');
+        if (transmission.length===0) return res.status(400).send('You must place at least one transmission');
+        if (description.length===0) return res.status(400).send('you must put a description');
+        if (image.length===0) return res.status(400).send('you must put an image');
+
+        const newCar = new CarModel({
+            amount: amount,
+            idCategory:idCategory,
+            idMarca:idMarca,
+            name:name,
+            age:age,
+            color:color,
+            price:price,
+            transmission:transmission,
+            description:description,
+            image:image
+        })
+
+        await newCar.save()
+        return res.status(200).send('car uploaded successfully')
+    } catch (error) {
+        return res.status(404).send(error)
+    }
+    
+
+
+}
+const deleteCar = async (id) => {
+    const cars = await CarModel.find();
+    const remainingCars = cars.filter(car => car._id.toString() != id);
+    console.log(remainingCars);
+    return remainingCars;
+};
 module.exports = {
     setCarsBDD,
     getAllCars,
     getCarById,
     getCarByName,
+    postCar,
+    deleteCar
 }
