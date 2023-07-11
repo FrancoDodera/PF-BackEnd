@@ -3,12 +3,12 @@ const express = require('express');
 const app = express();
 
 const carRoutes = require('./routes/carsRoutes/CarsRoutes')
-
 const usersRouter = require('./routes/UsersRoute');
 const categoryRouter = require('./routes/categoriesRoutes/category');
 const marcaRouter = require('./routes/brandRoutes/marca')
 const reviewsRoutes = require('./routes/reviewsRoute')
 const favoritesRoutes =require('./routes/favoriteRoutes')
+const paymentsRoutes = require('./routes/paymentsRoutes/paymentsRoutes')
 
 // Configuración de middleware
 
@@ -28,7 +28,7 @@ app.use('/reviews',reviewsRoutes)
 app.use('/user',usersRouter)
 app.use('/marca', marcaRouter);
 app.use('/category', categoryRouter);
-
+app.use('/payments', paymentsRoutes);
 app.use('/cars', carRoutes)
 
 // Manejo de errores

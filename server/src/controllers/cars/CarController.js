@@ -1,4 +1,4 @@
-const data = require('../../fake-api.js')
+const data = require('../../fake-api')
 const CarModel = require('../../models/CarModel.js')
 const Category = require('../../models/CategoryModel.js')
 const Marca = require('../../models/MarcaModel.js')
@@ -44,7 +44,7 @@ const getAllCars = async () => {
         const updatedCars = await cleanArray(cars);
         return updatedCars;
     }
-    await setCarsBDD();
+    const result = await setCarsBDD();
     const updatedResult = await cleanArray(result);
     return updatedResult;
 }
