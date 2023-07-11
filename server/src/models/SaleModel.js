@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-    const ventaSchema = new mongoose.Schema({
+    const saleSchema = new mongoose.Schema({
     id_user:{
         type:String
     },
@@ -20,6 +20,6 @@ const mongoose = require('mongoose');
 
 })
 
-const Venta = mongoose.model('Venta', ventaSchema);
+const Sale = mongoose.model('Sale', saleSchema);
 
-module.exports= Venta
+module.exports= Sale
