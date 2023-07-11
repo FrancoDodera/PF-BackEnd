@@ -12,6 +12,9 @@ const carSchema = new mongoose.Schema({
     transmission: String,
     description: String,
     image: String,
+    active:{type:Boolean,
+    default:true
+    }
 });
 
 const Car = mongoose.model('Car', carSchema);
