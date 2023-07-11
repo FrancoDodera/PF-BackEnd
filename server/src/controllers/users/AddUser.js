@@ -29,9 +29,8 @@ const addNewUser =async (req,res) =>{
             password:password,
 
         })
-       
         await newUser.save()
-        return res.status(200).send({acces:true})
+        return res.status(200).send({acces:true,data:newUser})
     } catch (error) {
         console.log(error)
         return res.status(400).send('the user is not logged in')
