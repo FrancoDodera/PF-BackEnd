@@ -35,7 +35,12 @@ const userSchema = new mongoose.Schema({
   image:{
     type:String,
     default:'colocar una imagen'
+  },
+  type:{
+    type:String,
+    default:'User'
   }
+
 });
 
 const User = mongoose.model('User', userSchema);
