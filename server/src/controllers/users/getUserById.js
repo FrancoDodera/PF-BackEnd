@@ -5,7 +5,6 @@ const getUserById=async(id)=>{
 
     try {
         const user= await User.findById(id)
-        
         return user
         
     } catch (error) {

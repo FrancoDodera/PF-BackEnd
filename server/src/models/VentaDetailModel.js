@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
     id_car:{
         type:String
     },
-    
     amount:{
         type: Number
     },
