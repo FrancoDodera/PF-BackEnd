@@ -3,13 +3,14 @@ const User = require('../../models/UserModel')
 
 const postSale = async (id_user, description, date, total, status) => {
     const user = await User.findById(id_user)
-    const sale = new Sale({
+    const newSale = new Sale({
         id_user: user,
         description: description,
         date: date,
         total: total,
         status: status
     })
+    const sale = await newSale.save()
     return sale
 }
 const deleteSale = async (id) => {
@@ -28,7 +29,7 @@ const getAllSales = async () => {
     return sales
 }
 const getSaleById = async (id) => {
-    const sale = await Sale.find({id_user:id})
+    const sale = await Sale.findById(id)
     return sale 
 }
 
