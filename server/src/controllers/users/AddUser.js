@@ -7,7 +7,7 @@ const addNewUser =async (req,res) =>{
 
         if(equalUser) {
             if (equalUser.status===false) return res.status(200).send('inactive user')
-            if(equalUser.password==password) return res.status(202).send({acces:true})
+            if(equalUser.password==password) return res.status(202).send({acces:true,data:equalUser})
             else{
                 return res.send('User found but wrong password')
             }
