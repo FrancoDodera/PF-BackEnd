@@ -1,7 +1,7 @@
 const User = require('../../models/UserModel')
 
 const addNewUser =async (req,res) =>{
-    const {email,name,lastName,dni,user,password,type}=req.body
+    const {email,name,lastName,dni,user,password,type,image}=req.body
     
     const equalUser = await User.findOne({user:user})
 
@@ -26,7 +26,8 @@ const addNewUser =async (req,res) =>{
             dni:dni,
             user:user,
             password:password,
-            type:type
+            type:type,
+            image:image
         })
         await newUser.save()
         return res.status(200).send({acces:true,data:newUser})
