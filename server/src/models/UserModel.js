@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
   },
   image:{
     type:String,
-    default:'colocar una imagen'
+    default:'https://res.cloudinary.com/dbt5vgimv/image/upload/v1689227244/CarGo/5034901-200_rujdfz.png'
   },
   type:{
     type:String,
