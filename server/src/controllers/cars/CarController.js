@@ -118,7 +118,7 @@ const postCar=async(req,res)=>{
         })
 
         await newCar.save()
-        return res.status(200).send('car uploaded successfully')
+        return res.status(200).json({message:'car uploaded successfully',data:newCar})
     } catch (error) {
         return res.status(404).send(error)
     }
@@ -139,7 +139,8 @@ const updateCar= async (info)=>{
         if ( description != "") await CarModel.updateOne({_id:id},{description:description})
         if ( image != "") await CarModel.updateOne({_id:id},{image:image})
         if ( status != "") await CarModel.updateOne({_id:id},{status:status})
-
+        
+        return await CarModel.findById(id)
     } catch (error) {
         throw error
     }
