@@ -4,22 +4,26 @@ mercadopago.configure({
     access_token: "TEST-1648499011591010-071214-40d04786ef56144a348d375da06778d5-1421384797",
 });
 
-const postPreference = async (description, price, quantity, res) => {
+const postPreference = async (req,res) => {
+    let articuls=[]
+    req.body.map((car)=> {
+       let obj= {
+            title:car.name,
+            unit_price:Number(car.price),
+            quantity:Number(car.amount)
+        }
+        articuls.push(obj)
+    })
+    
     const preference = {
-        items: [
-            {
-                title: description,
-                unit_price: Number(price),
-                quantity: Number(quantity),
-            },
-        ],
+        items: articuls,
         back_urls: {
             success: "http://localhost:5173",
             failure: "http://localhost:5173",
             pending: "",
         },
             auto_return: "approved",
-        };
+    };
         mercadopago.preferences
             .create(preference)
             .then(function (response) {
@@ -31,6 +35,7 @@ const postPreference = async (description, price, quantity, res) => {
             })
             .catch(function (error) {
                 console.log(error);
+                res.send(error)
             });
 }
 
