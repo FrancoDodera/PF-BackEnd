@@ -37,7 +37,7 @@ const postCarhandeler = async (req,res)=>{
 
 const updateCarHandler = async(req,res)=>{
     try {
-        const respose= await updateCar(req.body)
+        const response= await updateCar(req.body)
         return res.status(200).json(response)
     } catch (error) {
         return res.status(404).send(error)
