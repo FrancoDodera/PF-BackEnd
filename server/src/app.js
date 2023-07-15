@@ -11,6 +11,7 @@ const favoritesRoutes =require('./routes/favoriteRoutes')
 const paymentsRoutes = require('./routes/paymentsRoutes/paymentsRoutes')
 const saledetail =require('./routes/saleDetail')
 const sale = require('./routes/saleRoutes/saleRoutes')
+const mercadopagoRoutes = require('./routes/mercadopagoRoutes/mercadopagoRoutes')
 // Configuración de middleware
 
 app.use(express.json());
@@ -33,6 +34,7 @@ app.use('/payments', paymentsRoutes);
 app.use('/cars', carRoutes)
 app.use('/detail',saledetail)
 app.use('/sale', sale)
+app.use('/checkout', mercadopagoRoutes)
 
 // Manejo de errores
 app.use((err, req, res, next) => {
