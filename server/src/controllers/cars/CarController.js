@@ -184,7 +184,7 @@ const updateCar= async (info)=>{
             description: newCar.description,
             image: newCar.image
         };
-        return res.status(200).json({message:'car updated successfully',data:updatedCar})
+        return {message:'car updated successfully',data:updatedCar}
     } catch (error) {
         throw error
     }

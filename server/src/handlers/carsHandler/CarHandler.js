@@ -1,4 +1,5 @@
 
+const { response } = require('express')
 const { getAllCars, getCarById, getCarByName, postCar, deleteCar, updateCar } = require('../../controllers/cars/CarController')
 
 
@@ -36,8 +37,8 @@ const postCarhandeler = async (req,res)=>{
 
 const updateCarHandler = async(req,res)=>{
     try {
-         updateCar(req.body)
-        return res.status(200).send('the car is modified successfully')
+        const respose= await updateCar(req.body)
+        return res.status(200).json(response)
     } catch (error) {
         return res.status(404).send(error)
     }
