@@ -88,19 +88,20 @@ const getCarByName = async (name) => {
 const postCar=async(req,res)=>{
     try {
         
-        const {amount,idCategory,idMarca,name,age,color,price,transmission,description,image}=req.body
+        const {amount,idCategory,idMarca,name,age,color,status,price,transmission,description,image}=req.body
 
-        
-        if (amount===0 || typeof amount !=="number") return res.status(400).send('you must put an amount');
-        if (idCategory.length===0) return res.status(400).send('you must put a category');
-        if (idMarca.length===0) return res.status(400).send('you must place a mark');
-        if (name.length===0) return res.status(400).send('you must put a name');
-        if (age===0 || typeof age !=="number") return res.status(400).send('you must put a year');
-        if (color.length===0) return res.status(400).send('you must put at least one color');
-        if (price.length===0) return res.status(400).send('you must put at least one price');
-        if (transmission.length===0) return res.status(400).send('You must place at least one transmission');
-        if (description.length===0) return res.status(400).send('you must put a description');
-        if (image.length===0) return res.status(400).send('you must put an image');
+        if(amount == 0 || typeof amount !=="number") return res.status(400).send('you must put an amount');
+        if(idCategory =="") return res.status(400).send('you must put a category');
+        if(idMarca =="") return res.status(400).send('you must place a mark');
+        if(name == "") return res.status(400).send('you must put a name');
+        if(age===0 || typeof age !=="number") return res.status(400).send('you must put a year');
+        if(color == "") return res.status(400).send('you must put at least one color');
+        if(price == 0) return res.status(400).send('you must put at least one price');
+        if(transmission == "") return res.status(400).send('You must place at least one transmission');
+        if(description == "") return res.status(400).send('you must put a description');
+        if(image == "") return res.status(400).send('you must put an image');
+        if(status == "") return res.status(400).send('you must put an status');
+
 
         const newCar = new CarModel({
             amount: amount,
@@ -112,7 +113,8 @@ const postCar=async(req,res)=>{
             price:price,
             transmission:transmission,
             description:description,
-            image:image
+            image:image,
+            status:status
         })
 
         await newCar.save()
@@ -127,16 +129,16 @@ const updateCar= async (info)=>{
 
     try {
         if (amount>0) await CarModel.updateOne({_id:id},{amount:amount})
-        if (idCategory.length>0) await CarModel.updateOne({_id:id},{idCategory:idCategory})
-        if (idMarca.length>0) await CarModel.updateOne({_id:id},{idMarca:idMarca})
-        if (name.length>0) await CarModel.updateOne({_id:id},{name:name})
-        if (typeof age==='number'&&age>0) await CarModel.updateOne({_id:id},{age:age})
-        if (color.length>0) await CarModel.updateOne({_id:id},{color:color})
+        if (idCategory != "") await CarModel.updateOne({_id:id},{idCategory:idCategory})
+        if (idMarca != "") await CarModel.updateOne({_id:id},{idMarca:idMarca})
+        if (name != "") await CarModel.updateOne({_id:id},{name:name})
+        if (typeof age==='number' && age>0) await CarModel.updateOne({_id:id},{age:age})
+        if (color != "") await CarModel.updateOne({_id:id},{color:color})
         if (typeof price==='number'&& price>0) await CarModel.updateOne({_id:id},{price:price})
-        if ( transmission.length>0) await CarModel.updateOne({_id:id},{transmission:transmission})
-        if ( description.length>0) await CarModel.updateOne({_id:id},{description:description})
-        if ( image.length>0) await CarModel.updateOne({_id:id},{image:image})
-        if ( status.length>0) await CarModel.updateOne({_id:id},{status:status})
+        if ( transmission != "") await CarModel.updateOne({_id:id},{transmission:transmission})
+        if ( description != "") await CarModel.updateOne({_id:id},{description:description})
+        if ( image != "") await CarModel.updateOne({_id:id},{image:image})
+        if ( status != "") await CarModel.updateOne({_id:id},{status:status})
 
     } catch (error) {
         throw error
