@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-
+const mercadoPago=require('./routes/mercadoPagoRoutes')
 const carRoutes = require('./routes/carsRoutes/CarsRoutes')
 const usersRouter = require('./routes/UsersRoute');
 const categoryRouter = require('./routes/categoriesRoutes/category');
@@ -31,6 +31,7 @@ app.use('/category', categoryRouter);
 app.use('/payments', paymentsRoutes);
 app.use('/cars', carRoutes)
 app.use('/detail',saledetail)
+app.use('/mercado-pago',mercadoPago)
 
 // Manejo de errores
 app.use((err, req, res, next) => {
