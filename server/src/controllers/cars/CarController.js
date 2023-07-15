@@ -116,9 +116,30 @@ const postCar=async(req,res)=>{
             image:image,
             status:status
         })
-
         await newCar.save()
-        return res.status(200).json({message:'car uploaded successfully',data:newCar})
+        const category = await Category.findById(newCar.idCategory);
+        const marca = await Marca.findById(newCar.idMarca);
+        const updatedCar = {
+            _id: newCar._id,
+            amount: newCar.amount,
+            idCategory: {
+                _id: category._id,
+                name: category.name
+            },
+            idMarca: {
+                _id: marca._id,
+                name: marca.name
+            },
+            name: newCar.name,
+            age: newCar.age,
+            status:newCar.status,
+            color: newCar.color,
+            price: newCar.price,
+            transmission: newCar.transmission,
+            description: newCar.description,
+            image: newCar.image
+        };
+        return res.status(200).json({message:'car uploaded successfully',data:updatedCar})
     } catch (error) {
         return res.status(404).send(error)
     }
@@ -139,8 +160,31 @@ const updateCar= async (info)=>{
         if ( description != "") await CarModel.updateOne({_id:id},{description:description})
         if ( image != "") await CarModel.updateOne({_id:id},{image:image})
         if ( status != "") await CarModel.updateOne({_id:id},{status:status})
-        
-        return await CarModel.findById(id)
+
+        const newCar= await CarModel.findById(id)
+        const category = await Category.findById(newCar.idCategory);
+        const marca = await Marca.findById(newCar.idMarca);
+        const updatedCar = {
+            _id: newCar._id,
+            amount: newCar.amount,
+            idCategory: {
+                _id: category._id,
+                name: category.name
+            },
+            idMarca: {
+                _id: marca._id,
+                name: marca.name
+            },
+            name: newCar.name,
+            age: newCar.age,
+            status:newCar.status,
+            color: newCar.color,
+            price: newCar.price,
+            transmission: newCar.transmission,
+            description: newCar.description,
+            image: newCar.image
+        };
+        return res.status(200).json({message:'car updated successfully',data:updatedCar})
     } catch (error) {
         throw error
     }
