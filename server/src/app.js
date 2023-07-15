@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const mercadoPago=require('./routes/mercadoPagoRoutes')
+
 const carRoutes = require('./routes/carsRoutes/CarsRoutes')
 const usersRouter = require('./routes/UsersRoute');
 const categoryRouter = require('./routes/categoriesRoutes/category');
