@@ -2,7 +2,7 @@ const User = require("../../models/UserModel")
 
 const loginUser=async({user,password})=>{
     try {
-        const document=await User.findOne({user:user,password:password})
+        const document=await User.findOne({user:user,password:password,status:true})
         if(document){
             return {acces:true,data:document}
         }

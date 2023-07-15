@@ -2,7 +2,7 @@ const User = require("../../models/UserModel")
 
 
 const uptadeUser=async (usuario)=>{
-    const {id,email,name,lastName,user,password,image}=usuario
+    const {id,email,name,lastName,user,password,image,type}=usuario
     
     try {
         if (name.length>0) await User.updateOne({_id:id},{name:name})
@@ -12,9 +12,9 @@ const uptadeUser=async (usuario)=>{
         if (user.length>0) await User.updateOne({_id:id},{user:user})
         if (password.length>0) await User.updateOne({_id:id},{password:password})
         if (image.length>0) await User.updateOne({_id:id},{image:image})
+        if (type.length>0) await User.updateOne({_id:id},{type:type})
        return await User.findById(id)
     } catch (error) {
-        console.log(error)
         throw error
     }
 }

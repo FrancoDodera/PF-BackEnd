@@ -30,7 +30,7 @@ const getCarByNameHandler = async (req, res) => {
 }
 
 const postCarhandeler = async (req,res)=>{
-    const carPosted= postCar(req,res)
+     await postCar(req,res)
 }
 
 

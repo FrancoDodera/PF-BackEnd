@@ -1,13 +1,13 @@
 const User = require('../../models/UserModel')
 
 const addNewUser =async (req,res) =>{
-    const {email,name,lastName,dni,user,password}=req.body
+    const {email,name,lastName,dni,user,password,type,image}=req.body
     
     const equalUser = await User.findOne({user:user})
 
         if(equalUser) {
             if (equalUser.status===false) return res.status(200).send('inactive user')
-            if(equalUser.password==password) return res.status(202).send({acces:true})
+            if(equalUser.password==password) return res.status(202).send({acces:true,data:equalUser})
             else{
                 return res.send('User found but wrong password')
             }
@@ -17,8 +17,7 @@ const addNewUser =async (req,res) =>{
         if (!lastName) return res.status(400).send(`enter a lastName`)
         if (!user) return res.status(400).send(`enter a user`)
         if (!password) return res.status(400).send(`enter a password`)
-        
-
+        if (!type) return res.status(400).send(`enter a type`)
     try {
         const newUser = new User({
             email:email,
@@ -27,12 +26,12 @@ const addNewUser =async (req,res) =>{
             dni:dni,
             user:user,
             password:password,
-
+            type:type,
+            image:image
         })
         await newUser.save()
         return res.status(200).send({acces:true,data:newUser})
     } catch (error) {
-        console.log(error)
         return res.status(400).send('the user is not logged in')
     }
 }
