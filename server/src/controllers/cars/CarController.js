@@ -84,7 +84,6 @@ const getCarByName = async (name) => {
     const updatedCar =await cleanArray(car)
     return updatedCar
 }
-
 const postCar=async(req,res)=>{
     try {
         
@@ -190,12 +189,16 @@ const updateCar= async (info)=>{
     }
 
 }
-
 const deleteCar = async (id) => {
-    const cars = await CarModel.find();
-    const remainingCars = cars.filter(car => car._id.toString() != id);
-    console.log(remainingCars);
-    return remainingCars;
+    const car =await CarModel.findById(id);
+    if(car.active){
+        const document=await CarModel.findByIdAndUpdate(id, { active: false }, { new: true })
+        return document;
+    }else{
+        const document=await CarModel.findByIdAndUpdate(id, { active: true }, { new: true })
+        return document;
+    }
+    
 };
 
 module.exports = {
