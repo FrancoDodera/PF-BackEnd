@@ -5,6 +5,7 @@ const app = Router()
 app.get('/', (req, res) => {
     res.send('ruta de mercadoPago')
 })
+
 app.post('/', postPreferenceHandler)
 
 module.exports = app
