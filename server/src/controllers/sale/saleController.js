@@ -29,7 +29,7 @@ const getAllSales = async () => {
     return sales
 }
 const getSaleById = async (id) => {
-    const sale = await Sale.findOne({id_user:id})
+    const sale = await Sale.find({id_user:id})
     return sale
 }
 
