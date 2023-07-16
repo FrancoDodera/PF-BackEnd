@@ -10,7 +10,7 @@ mercadopago.configure({
 
 const postPreference = async (req, res) => {
   let articuls = [];
-  let {sale} = req.body;
+  let saleDetail = req.body.sale;
   let {detailSale} = req.body;
 
   detailSale.map((car) => {
@@ -24,7 +24,7 @@ const postPreference = async (req, res) => {
 
   try {
     const sale = await postSale(
-      sale
+        saleDetail
     );
 
     detailSale.map(async (car) => {
