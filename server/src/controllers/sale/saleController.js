@@ -29,8 +29,8 @@ const getAllSales = async () => {
     return sales
 }
 const getSaleById = async (id) => {
-    const sale = await Sale.findById(id)
-    return sale 
+    const sale = await Sale.findOne({id_user:id})
+    return sale
 }
 
 module.exports = {
