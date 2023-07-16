@@ -139,7 +139,7 @@ const postCar=async(req,res)=>{
             transmission: newCar.transmission,
             description: newCar.description,
             image: newCar.image,
-            active:car.active
+            active:newCar.active
         };
         return res.status(200).json({message:'car uploaded successfully',data:updatedCar})
     } catch (error) {
@@ -185,7 +185,7 @@ const updateCar= async (info)=>{
             transmission: newCar.transmission,
             description: newCar.description,
             image: newCar.image,
-            active:car.active
+            active:newCar.active
         };
         return {message:'car updated successfully',data:updatedCar}
     } catch (error) {
@@ -218,7 +218,7 @@ const deleteCar = async (id) => {
             transmission: document.transmission,
             description: document.description,
             image: document.image,
-            active:car.active
+            active:document.active
         };
         return updatedCar;
     }else{
@@ -244,7 +244,7 @@ const deleteCar = async (id) => {
             transmission: document.transmission,
             description: document.description,
             image: document.image,
-            active:car.active
+            active:document.active
         };
         return updatedCar;
     }
