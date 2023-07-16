@@ -23,18 +23,18 @@ const postPreference = async (req, res) => {
   });
 
   try {
-    const sale = await postSale(
-        saleDetail
-    );
+    // const sale = await postSale(
+    //     saleDetail
+    // );
 
-    detailSale.map(async (car) => {
-      await postSaleDetail({
-        id_venta: sale._id,
-        id_car: car.id_car,
-        amount: car.amount,
-        subtotal: car.price * car.amount,
-      });
-    });
+    // detailSale.map(async (car) => {
+    //   await postSaleDetail({
+    //     id_venta: sale._id,
+    //     id_car: car.id_car,
+    //     amount: car.amount,
+    //     subtotal: car.price * car.amount,
+    //   });
+    // });
 
     const preference = {
       items: articuls,
