@@ -27,7 +27,8 @@ const cleanArray = async (cars) => {
                             price: car.price,
                             transmission: car.transmission,
                             description: car.description,
-                            image: car.image
+                            image: car.image,
+                            active:car.active
                         };
                         updatedCars.push(updatedCar);
                 })
@@ -70,7 +71,8 @@ const getCarById = async (id) => {
         price: car.price,
         transmission: car.transmission,
         description: car.description,
-        image: car.image
+        image: car.image,
+        active:car.active
     };
     return updatedCar
 }
@@ -136,7 +138,8 @@ const postCar=async(req,res)=>{
             price: newCar.price,
             transmission: newCar.transmission,
             description: newCar.description,
-            image: newCar.image
+            image: newCar.image,
+            active:car.active
         };
         return res.status(200).json({message:'car uploaded successfully',data:updatedCar})
     } catch (error) {
@@ -181,7 +184,8 @@ const updateCar= async (info)=>{
             price: newCar.price,
             transmission: newCar.transmission,
             description: newCar.description,
-            image: newCar.image
+            image: newCar.image,
+            active:car.active
         };
         return {message:'car updated successfully',data:updatedCar}
     } catch (error) {
@@ -213,7 +217,8 @@ const deleteCar = async (id) => {
             price: document.price,
             transmission: document.transmission,
             description: document.description,
-            image: document.image
+            image: document.image,
+            active:car.active
         };
         return updatedCar;
     }else{
@@ -238,7 +243,8 @@ const deleteCar = async (id) => {
             price: document.price,
             transmission: document.transmission,
             description: document.description,
-            image: document.image
+            image: document.image,
+            active:car.active
         };
         return updatedCar;
     }
