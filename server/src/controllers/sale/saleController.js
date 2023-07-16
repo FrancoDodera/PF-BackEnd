@@ -13,6 +13,7 @@ const postSale = async (id_user, description, date, total, status) => {
     const sale = await newSale.save()
     return sale
 }
+
 const deleteSale = async (id) => {
     const cd =await  Sale.findOne({_id:id})
     
