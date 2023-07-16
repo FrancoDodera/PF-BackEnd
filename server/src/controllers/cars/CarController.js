@@ -193,10 +193,54 @@ const deleteCar = async (id) => {
     const car =await CarModel.findById(id);
     if(car.active){
         const document=await CarModel.findByIdAndUpdate(id, { active: false }, { new: true })
-        return document;
+        const category = await Category.findById(document.idCategory);
+        const marca = await Marca.findById(document.idMarca);
+        const updatedCar = {
+            _id: document._id,
+            amount: document.amount,
+            idCategory: {
+                _id: category._id,
+                name: category.name
+            },
+            idMarca: {
+                _id: marca._id,
+                name: marca.name
+            },
+            name: document.name,
+            age: document.age,
+            status:document.status,
+            color: document.color,
+            price: document.price,
+            transmission: document.transmission,
+            description: document.description,
+            image: document.image
+        };
+        return updatedCar;
     }else{
         const document=await CarModel.findByIdAndUpdate(id, { active: true }, { new: true })
-        return document;
+        const category = await Category.findById(document.idCategory);
+        const marca = await Marca.findById(document.idMarca);
+        const updatedCar = {
+            _id: document._id,
+            amount: document.amount,
+            idCategory: {
+                _id: category._id,
+                name: category.name
+            },
+            idMarca: {
+                _id: marca._id,
+                name: marca.name
+            },
+            name: document.name,
+            age: document.age,
+            status:document.status,
+            color: document.color,
+            price: document.price,
+            transmission: document.transmission,
+            description: document.description,
+            image: document.image
+        };
+        return updatedCar;
     }
     
 };
