@@ -10,7 +10,7 @@ mercadopago.configure({
 
 const postPreference = async (req, res) => {
   let articuls = [];
-  let saleDetail = req.body.sale;
+  let {sale} = req.body;
   let {detailSale} = req.body;
 
   detailSale.map((car) => {
@@ -23,13 +23,17 @@ const postPreference = async (req, res) => {
   });
 
   try {
-    const sale = await postSale(
-        saleDetail
+    const status=true;
+    const saleCreated = await postSale(
+            sale.id_user,
+            sale.description,
+            sale.date,
+            sale.total,
+            status
     );
-
     detailSale.map(async (car) => {
       await postSaleDetail({
-        id_venta: sale._id,
+        id_venta: saleCreated._id,
         id_car: car.id_car,
         amount: car.amount,
         subtotal: car.price * car.amount,
@@ -56,11 +60,9 @@ const postPreference = async (req, res) => {
         });
       })
       .catch(function (error) {
-        console.log(error);
         res.send(error);
       });
   } catch (error) {
-    console.log(error);
     res.send(error);
   }
 };

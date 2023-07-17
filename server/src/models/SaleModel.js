@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
         type:String
     },
     date:{
-        type:String
+        type:Date
     },
     total:{
         type: Number

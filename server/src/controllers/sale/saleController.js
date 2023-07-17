@@ -1,10 +1,10 @@
 const Sale = require('../../models/SaleModel')
-const User = require('../../models/UserModel')
+
 
 const postSale = async (id_user, description, date, total, status) => {
-    const user = await User.findById(id_user)
+
     const newSale = new Sale({
-        id_user: user,
+        id_user: id_user,
         description: description,
         date: date,
         total: total,
