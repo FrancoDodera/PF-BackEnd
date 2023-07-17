@@ -24,6 +24,7 @@ const postPreference = async (req, res) => {
 
   try {
     const status=true;
+    console.log(detailSale)
     const saleCreated = await postSale(
             sale.id_user,
             sale.description,
@@ -34,7 +35,7 @@ const postPreference = async (req, res) => {
     detailSale.map(async (car) => {
       await postSaleDetail({
         id_venta: saleCreated._id,
-        id_car: car.id_car,
+        id_car: car.id,
         amount: car.amount,
         subtotal: car.price * car.amount,
       });
