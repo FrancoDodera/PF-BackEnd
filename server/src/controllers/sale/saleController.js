@@ -1,4 +1,5 @@
 const Sale = require('../../models/SaleModel')
+const User = require('../../models/UserModel')
 
 
 const postSale = async (id_user, description, date, total, status) => {
@@ -26,8 +27,28 @@ const deleteSale = async (id) => {
     }
 }
 const getAllSales = async () => {
+    let allSales=[];
     const sales = await Sale.find()
-    return sales
+    await Promise.all(
+        sales.map(async(elem)=>{
+            const dataUser=await User.findById(elem.id_user)
+            const body={
+                _id:elem._id,
+                id_user:{
+                    id:dataUser._id,
+                    name:dataUser.name,
+                    user:dataUser.user,
+                    email:dataUser.email
+                },
+                description:elem.description,
+                date:elem.date,
+                total:elem.total,
+                status:elem.status
+            }
+            allSales.push(body);
+        })
+    )
+    return allSales
 }
 const getSaleById = async (id) => {
     const sale = await Sale.find({id_user:id})
