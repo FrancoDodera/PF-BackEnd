@@ -1,4 +1,5 @@
 const SaleDetail = require("../../models/VentaDetailModel")
+const CarModel = require('../../models/CarModel.js')
 
 
 const postSaleDetail=async(info)=>{
@@ -37,8 +38,28 @@ const deleteSaleDetail=async(id)=>{
 
 const getSaleSetailBySale= async (id)=>{
     try {
+        let newData=[];
         const allDetails= await SaleDetail.find({id_venta:id})
-        return allDetails
+        
+        await Promise.all(
+            allDetails.map(async(elem)=>{
+                const carData=await CarModel.findById(elem.id_car)
+                const body={
+                    _id:elem._id,
+                    id_venta:elem.id_venta,
+                    id_car:{
+                        id:carData._id,
+                        name:carData.name
+                    },
+                    amount:elem.amount,
+                    subtotal:elem.subtotal,
+                    status:elem.status
+
+                }
+                newData.push(body)
+            })
+        )
+        return newData
     } catch (error) {
         throw error
     }
