@@ -13,7 +13,7 @@ app.post("/addReview", (req, res) => {
   addReviewHandler(req, res);
 });
 
-app.get("/getReview", (req, res) => {
+app.get("/getReview/:id_car", (req, res) => {
   getReviewHandler(req, res);
 });
 
