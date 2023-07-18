@@ -1,11 +1,32 @@
-const{Router} =require('express')
-const app = Router()
-const AddFavorite= require('../handlers/favorites/AddFavoriteHandler')
-
+const { Router } = require("express");
+const app = Router();
+const {
+  addReviewHandler,
+  getReviewHandler,
+  getAllReviewsHandler,
+  deleteReviewHandler,
+  updateReviewHandler,
+} = require("../handlers/favorites/AddFavoriteHandler");
 
 //añadir una review
-app.post('/addFavorite',(req,res)=>{
-    AddFavorite(req,res)
+app.post("/addFavorite", (req, res) => {
+  addReviewHandler(req, res);
+});
+
+app.get("/getFavorite", (req, res) => {
+  getReviewHandler(req, res);
 })
 
-module.exports=app
+app.get("/getAllFavorite", (req, res) => {
+  getAllReviewsHandler(req, res);
+})
+
+app.delete("/deleteFavorite", (req, res) => {
+  deleteReviewHandler(req, res);
+})
+
+app.put("/updateFavorite", (req, res) => {
+  updateReviewHandler(req, res);
+})
+
+module.exports = app;
