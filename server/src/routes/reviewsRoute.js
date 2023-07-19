@@ -1,32 +1,21 @@
-const { Router } = require("express");
-const app = Router();
 const {
   addReviewHandler,
   getReviewHandler,
   getAllReviewsHandler,
   deleteReviewHandler,
   updateReviewHandler,
-} = require("../handlers/reviews/AddReviewHandler");
+} = require("../handlers/reviews/ReviewHandler");
 
-//añadir una review
-app.post("/addReview", (req, res) => {
-  addReviewHandler(req, res);
-});
+const {Router} = require('express')
 
-app.get("/getReview/:id_car", (req, res) => {
-  getReviewHandler(req, res);
-});
 
-app.get("/getAllReviews", (req, res) => {
-  getAllReviewsHandler(req, res);
-});
+const reviewRoutes = Router()
 
-app.put("/updateReview", (req, res) => {
-  updateReviewHandler(req, res);
-});
+reviewRoutes.post('/', addReviewHandler);
+reviewRoutes.get('/', getReviewHandler);
+reviewRoutes.get('/:id', getAllReviewsHandler);
+reviewRoutes.delete('/:id', deleteReviewHandler);
+reviewRoutes.put('/', updateReviewHandler);
 
-app.delete("/deleteReview", (req, res) => {
-  deleteReviewHandler(req, res);
-});
+module.exports = reviewRoutes;
 
-module.exports = app;
