@@ -1,6 +1,7 @@
 const Reviews = require("../../models/Reviews");
 const SaleDetail = require("../../models/VentaDetailModel");
 const Sale = require("../../models/SaleModel");
+const User = require('../../models/UserModel')
 
 const userHasCar = async (id_user, id_car) => {
   try {
@@ -62,6 +63,7 @@ const addReview = async (id_user, id_car, coment, value) => {
 //get review
 const getReview = async (id_car) => {
   try {
+    
     let response=[];
     const review = await Reviews.find({ id_car: id_car});
     if(review.length>0){
