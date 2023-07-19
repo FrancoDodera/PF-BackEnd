@@ -22,4 +22,4 @@ const mongoose = require('mongoose');
 
 const SaleDetail = mongoose.model('SaleDetail', SaleDetailSchema);
 
-module.exports= SaleDetail
+module.exports= SaleDetail;

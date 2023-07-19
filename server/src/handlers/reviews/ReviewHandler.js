@@ -1,26 +1,29 @@
 const {
-    addReviews,
+    addReview,
     getReview,
     getAllReviews,
     deleteReview,
     updateReview,
   } = require("../../controllers/reviews/addReview");
   
-  const updateReviewHandler = (req, res) => {
-    const { id_user, id_car, coment, value } = req.body;
+  const updateReviewHandler = async (req, res) => {
+    const {coment, id, value } = req.body;
     try {
-      updateReview(id_user, id_car, coment, value);
-      return res.status(200).send("your review was updated successfully");
+      const update = await updateReview(id, coment, value);
+      return res.status(200).send({message:"your review was updated successfully", data: update});
     } catch (error) {
       return res.status(400).send(error);
     }
   }
   
-  const addReviewHandler = (req, res) => {
+  const addReviewHandler = async (req, res) => {
     const { id_user, id_car, coment, value } = req.body;
     try {
-      addReviews(id_user, id_car, coment, value);
-      return res.status(200).send("your review was uploaded successfully");
+      const review = await addReview(id_user, id_car, coment, value);
+      if (!review) {
+        return res.status(400).send({message:"The user must have a car purchased to add a review"});
+      } else {
+        return res.status(200).send({message:"your review was uploaded successfully", data: review} );}
     } catch (error) {
       return res.status(400).send(error);
     }
@@ -45,20 +48,21 @@ const {
     }
   };
   
-  const deleteReviewHandler = (req, res) => {
-    const { id_user, id_car } = req.params;
+  const deleteReviewHandler = async (req, res) => {
+    const { id } = req.params;
     try {
-      const review = deleteReview(id_user, id_car);
-      return res.status(200).send(review);
+      await deleteReview(id);
+      return res.status(200).send({message: "Review deleted"});
     } catch (error) {
       return res.status(400).send(error);
     }
   };
+
   
-  module.exports = 
+  module.exports = {
     addReviewHandler,
     getReviewHandler,
     getAllReviewsHandler,
     deleteReviewHandler,
-    updateReviewHandler;
-  
+    updateReviewHandler,
+  };
