@@ -29,19 +29,19 @@ const addReviewHandler = async (req, res) => {
   }
 };
 
-const getReviewHandler = (req, res) => {
-  const { id_user, id_car } = req.params;
-  try {
-    const review = getReview(id_user, id_car);
-    return res.status(200).send(review);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
+const getReviewHandler = async(req, res) => {
+  const { id_car } = req.params;
+    try {
+      const review = await getReview(id_car);
+      return res.status(200).send(review);
+    } catch (error) {
+      return res.status(400).send(error);
+    }
 };
 
-const getAllReviewsHandler = (req, res) => {
+const getAllReviewsHandler = async(req, res) => {
   try {
-    const reviews = getAllReviews();
+    const reviews = await getAllReviews();
     return res.status(200).send(reviews);
   } catch (error) {
     return res.status(400).send(error);

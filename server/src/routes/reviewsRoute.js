@@ -12,8 +12,8 @@ const {Router} = require('express')
 const reviewRoutes = Router()
 
 reviewRoutes.post('/', addReviewHandler);
-reviewRoutes.get('/', getReviewHandler);
-reviewRoutes.get('/:id', getAllReviewsHandler);
+reviewRoutes.get('/getReview/:id_car', getReviewHandler);
+reviewRoutes.get('/getAllReviews', getAllReviewsHandler);
 reviewRoutes.delete('/:id', deleteReviewHandler);
 reviewRoutes.put('/', updateReviewHandler);
 

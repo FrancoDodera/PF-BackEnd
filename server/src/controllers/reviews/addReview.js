@@ -60,10 +60,33 @@ const addReview = async (id_user, id_car, coment, value) => {
 };
 
 //get review
-const getReview = async (id_user, id_car) => {
+const getReview = async (id_car) => {
   try {
-    const review = await Reviews.find({ id_car: id_car, id_user: id_user });
-    return review;
+    let response=[];
+    const review = await Reviews.find({ id_car: id_car});
+    if(review.length>0){
+      await Promise.all(
+        review.map(async(elem)=>{
+          const dataUser=await User.findById(elem.id_user);
+          const body={
+            _id:elem._id,
+            id_user:{
+              id:dataUser._id,
+              name:dataUser.name,
+              lastNmae:dataUser.lastName,
+              user:dataUser.user,
+              image:dataUser.image
+            },
+            id_car:elem.id_car,
+            coment:elem.coment,
+            value:elem.value
+          }
+          response.push(body)
+        })
+      )
+    }
+    
+    return response;
   } catch (error) {
     throw error;
   }
