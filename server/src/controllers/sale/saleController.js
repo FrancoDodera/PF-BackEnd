@@ -2,14 +2,13 @@ const Sale = require('../../models/SaleModel')
 const User = require('../../models/UserModel')
 
 
-const postSale = async (id_user, description, date, total, status) => {
+const postSale = async (id_user, description, date, sumaTotal) => {
 
     const newSale = new Sale({
         id_user: id_user,
         description: description,
         date: date,
-        total: total,
-        status: status
+        total: sumaTotal,
     })
     const sale = await newSale.save()
     return sale
@@ -55,9 +54,12 @@ const getSaleById = async (id) => {
     return sale
 }
 
+const deleteCar=()=>{}
+
 module.exports = {
     postSale,
     deleteSale,
     getAllSales,
-    getSaleById
+    getSaleById,
+    deleteCar
 }
