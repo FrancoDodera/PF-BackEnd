@@ -39,9 +39,15 @@ if (count > 0) {
   }
 };
 
+
 //post
 const addReview = async (id_user, id_car, coment, value) => {
+  const palabrotas = ['palabramala1', 'palabramala2', 'palabramala3'];
   try {
+    const palabrasMalas = palabrotas.some(word => coment.includes(word));
+    if (palabrasMalas){
+      return "You can't post a review with these words";
+    }
     const hasPurchase = await userHasCar(id_user, id_car);
     if (hasPurchase) {
       const newReview = new Reviews({

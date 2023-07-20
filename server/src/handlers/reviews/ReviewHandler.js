@@ -19,6 +19,11 @@ const updateReviewHandler = async (req, res) => {
 const addReviewHandler = async (req, res) => {
   const { id_user, id_car, coment, value } = req.body;
   try {
+    const palabrotas = ['palabramala1', 'palabramala2', 'palabramala3'];
+    const palabrasMalas = palabrotas.some(word => coment.includes(word));
+    if (palabrasMalas) {
+      return res.status(400).send({ message: "You can't post a review with these words" });
+    }
     const review = await addReview(id_user, id_car, coment, value);
     if (!review) {
       return res.status(400).send({message:"The user must have a car purchased to add a review"});
