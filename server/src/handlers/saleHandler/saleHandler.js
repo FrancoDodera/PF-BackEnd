@@ -13,7 +13,7 @@ const postSaleHandler =async (req, res) => {
             const newSale=await postSale(sale.id_user,sale.description,sale.date,sale.total)
             await Promise.all(
                 detailSale.map(async(detail)=>{
-                    await postSaleDetail(newSale._id,detail.id_car,detail.amount,detail.subtotal)
+                    await postSaleDetail(newSale._id,detail.id,detail.amount,detail.totalPrice)
                 })
             )
             return res.status(200).json({message:'Saved Data'})
@@ -29,7 +29,7 @@ const postSaleHandler =async (req, res) => {
                 await Detail.deleteMany({id_venta:newSale._id})
                 await Promise.all(
                     detailSale.map(async(detail)=>{
-                        await postSaleDetail(newSale._id,detail.id_car,detail.amount,detail.subtotal)
+                        await postSaleDetail(newSale._id,detail.id,detail.amount,detail.totalPrice)
                     })
                 )
             return res.status(200).json({message:'Updated Data'})
