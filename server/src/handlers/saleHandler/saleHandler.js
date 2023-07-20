@@ -76,6 +76,7 @@ const getSaleByIdHandler = async (req, res) => {
         let id_sale= sale[0]._id
         const details = await Detail.find({id_venta:id_sale})
         res.status(200).json(details)
+        console.log()
     } catch (error) {
         res.status(500).json({error: `Error getting sale`})
     }
