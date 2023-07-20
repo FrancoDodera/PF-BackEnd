@@ -2,16 +2,14 @@ const SaleDetail = require("../../models/VentaDetailModel")
 const CarModel = require('../../models/CarModel.js')
 
 
-const postSaleDetail=async(id_venta,id_car,)=>{
-    
-    const total= await CarModel.findById(id_car)
-    
+const postSaleDetail=async(id_venta,id_car,amount,subtotal)=>{
+        
     try { 
         const Detail =  new SaleDetail({
         id_venta:id_venta,
         id_car:id_car,
-        amount:1,
-        subtotal:total.price
+        amount:amount,
+        subtotal:subtotal
     })
     await Detail.save()
         
