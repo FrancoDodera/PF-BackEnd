@@ -50,7 +50,7 @@ const getAllSales = async () => {
     return allSales
 }
 const getSaleById = async (id) => {
-    const sale = await Sale.find({id_user:id})
+    const sale = await Sale.find({id_user:id, description: 'in cart'})
     return sale
 }
 
