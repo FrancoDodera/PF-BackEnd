@@ -7,6 +7,7 @@ const VerifyUser=require('../handlers/usersHandler/verifyUser')
 const GetUserByIdHandler= require('../handlers/usersHandler/GetUserByIdHandler')
 const uptadeUser=require('../handlers/Users/UptadeUserHandler')
 const loginUser=require('../handlers/usersHandler/loginUser');
+const changePasswordHandler=require('../handlers/usersHandler/changePasswordHandler')
 const{Router} =require('express')
 const app = Router()
 
@@ -45,6 +46,7 @@ app.post('/login',(req,res)=>{
 })
 
 
+
 //obtener toda la info de un usuario por id
 app.get('/:id',(req,res)=>{
     GetUserByIdHandler(req,res)
@@ -53,6 +55,11 @@ app.get('/:id',(req,res)=>{
 //modificar usuario
 app.put('/upgrade',(req,res)=>{
     uptadeUser(req,res)
+})
+
+//Cambiar Password
+app.put('/changePassword',(req,res)=>{
+    changePasswordHandler(req,res)
 })
 
 module.exports=app
