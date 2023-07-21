@@ -16,7 +16,7 @@ const addFavorites = async(id_user,id_car) => {
 }
 const removeFavorites = async (id) => {
     const favorite = await Favorite.deleteOne({ _id: id });
-    if (favorite) {
+    if (favorite.deletedCount>0) {
         return ({deleted:true,message:'Favorite removed successfully'})
     } else {
         return ({deleted:false ,message:'Error removing favorite'})
@@ -24,7 +24,7 @@ const removeFavorites = async (id) => {
 }
 const removeFavoritesByUser = async (id_user,id_car) => {
     const favorite = await Favorite.deleteOne({ id_user: id_user ,id_car:id_car});
-    if (favorite) {
+    if (favorite.deletedCount>0) {
         return ({deleted:true,message:'Favorite removed successfully'})
     } else {
         return ({deleted:false ,message:'Error removing favorite'})
