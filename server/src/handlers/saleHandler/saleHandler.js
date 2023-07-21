@@ -11,28 +11,33 @@ const postSaleHandler =async (req, res) => {
         const saleExist=await Sale.find({id_user:sale.id_user,description:'in cart'});
         if(saleExist.length == 0){
             const newSale=await postSale(sale.id_user,sale.description,sale.date,sale.total)
-            await Promise.all(
-                detailSale.map(async(detail)=>{
-                    await postSaleDetail(newSale._id,detail.id,detail.amount,detail.totalPrice)
-                })
-            )
+            if(detailSale.length > 0 ){
+                await Promise.all(
+                    detailSale.map(async(detail)=>{
+                        await postSaleDetail(newSale._id,detail.id,detail.amount,detail.totalPrice)
+                    })
+                )
+            }
             return res.status(200).json({message:'Saved Data'})
         }else{
                 const newSale = await Sale.findByIdAndUpdate(
-                    saleExist._id,
+                    saleExist[0]._id,
                     {
                       date: sale.date,
                       total: sale.total
                     },
                     { new: true } // Esto asegura que devuelve el documento actualizado, en lugar del documento anterior a la actualización
                   );
+                  
                 await Detail.deleteMany({id_venta:newSale._id})
-                await Promise.all(
-                    detailSale.map(async(detail)=>{
-                        await postSaleDetail(newSale._id,detail.id,detail.amount,detail.totalPrice)
-                    })
-                )
-            return res.status(200).json({message:'Updated Data'})
+                if(detailSale.length > 0){
+                    await Promise.all(
+                        detailSale.map(async(detail)=>{
+                            await postSaleDetail(newSale._id,detail.id,detail.amount,detail.totalPrice)
+                        })
+                    )
+                }
+                return res.status(200).json({message:'Updated Data'})
         }
         //extra
         // if (!id_user || !description || !date) {
