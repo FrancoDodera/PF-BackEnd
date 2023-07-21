@@ -7,5 +7,5 @@ app.get('/', (req, res) => {
 })
 app.post('/', addFavoritesHandler)
 app.delete('/:id', removeFavoritesHandler)
-app.post('/', removeFavoritesByUserHandler)
+app.post('/delete', removeFavoritesByUserHandler)
 module.exports=app
