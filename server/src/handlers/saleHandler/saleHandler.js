@@ -1,6 +1,7 @@
 const {postSale, deleteSale, getAllSales, getSaleById,deleteCar} = require('../../controllers/sale/saleController')
 const Sale = require('../../models/SaleModel')
 const Detail= require('../../models/VentaDetailModel')
+const Car=require('../../models/CarModel')
 const {postSaleDetail}=require('../../controllers/ventaDetail/ventadetailController')
 
 
@@ -90,10 +91,29 @@ const getSaleByIdHandler = async (req, res) => {
     const {id} = req.params
     try {
         const sale = await getSaleById(id)
-        let id_sale= sale[0]._id
-        const details = await Detail.find({id_venta:id_sale})
-        res.status(200).json(details)
-        console.log()
+        if(sale.length>0){
+            let response=[]
+            let id_sale= sale[0]._id
+            const details = await Detail.find({id_venta:id_sale})
+            await Promise.all(
+                details.map(async(detail)=>{
+                    const carDetails= await Car.findById(detail.id_car);
+                    const body={
+                        amount:detail.amount,
+                        id:carDetails._id,
+                        image:carDetails.image,
+                        name:carDetails.name,
+                        price:carDetails.price,
+                        totalPrice:detail.subtotal
+                    }
+                    response.push(body);
+                })
+            )
+            return res.status(200).json(response)
+        }
+        
+        
+        return res.status(200).json('no sales in cart')
     } catch (error) {
         res.status(500).json({error: `Error getting sale`})
     }
