@@ -1,4 +1,4 @@
-const {addFavorites, removeFavorites,removeFavoritesByUser} = require('../../controllers/favorites/favoritesController')
+const {addFavorites, removeFavorites,removeFavoritesByUser,getFavoritesByUser} = require('../../controllers/favorites/favoritesController')
 
 const addFavoritesHandler = async (req,res) => {
     const {id_user,id_car}=req.body
@@ -27,8 +27,18 @@ const removeFavoritesByUserHandler=async (req,res)=>{
         res.status(500).json({error: 'Error removing favorite'})
     }
 }
+const getFavoritesHandler=async(req,res)=>{
+    const {id_user}=req.params
+    try {
+        const favorites = await getFavoritesByUser(id_user)
+        res.status(200).json(favorites)
+    } catch (error) {
+        res.status(500).json({error: 'Error get favorites'})
+    }
+}
 module.exports = {
     addFavoritesHandler,
     removeFavoritesHandler,
-    removeFavoritesByUserHandler
+    removeFavoritesByUserHandler,
+    getFavoritesHandler
 }
