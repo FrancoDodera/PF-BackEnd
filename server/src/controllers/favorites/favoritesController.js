@@ -22,7 +22,16 @@ const removeFavorites = async (id) => {
         return ({deleted:false ,message:'Error removing favorite'})
     }
 }
+const removeFavoritesByUser = async (id_user,id_car) => {
+    const favorite = await Favorite.deleteOne({ id_user: id_user ,id_car:id_car});
+    if (favorite) {
+        return ({deleted:true,message:'Favorite removed successfully'})
+    } else {
+        return ({deleted:false ,message:'Error removing favorite'})
+    }
+}
 module.exports = {
     addFavorites,
     removeFavorites,
+    removeFavoritesByUser
 }
