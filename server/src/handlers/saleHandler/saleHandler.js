@@ -1,4 +1,4 @@
-const {postSale, deleteSale, getAllSales, getSaleById,deleteCar} = require('../../controllers/sale/saleController')
+const {postSale, deleteSale, getAllSales, getSaleById,deleteCar,getSalesByUser} = require('../../controllers/sale/saleController')
 const Sale = require('../../models/SaleModel')
 const Detail= require('../../models/VentaDetailModel')
 const Car=require('../../models/CarModel')
@@ -147,6 +147,15 @@ const DeleteCar=async (req,res)=>{
 
 
 }
+const getSalesByIdUserHandler=async(req,res)=>{
+    const {id} = req.params
+    try {
+        const sale = await getSalesByUser(id)
+        return res.status(200).json(sale)
+    } catch (error) {
+        res.status(500).json({error: `Error getting sale`})
+    } 
+}
 
 
 module.exports = {
@@ -154,5 +163,6 @@ module.exports = {
     deleteSaleHandler,
     getAllSalesHandler,
     getSaleByIdHandler,
-    DeleteCar
+    DeleteCar,
+    getSalesByIdUserHandler
 }

@@ -49,8 +49,14 @@ const getAllSales = async () => {
     )
     return allSales
 }
+//obtener venta 'in cart' por id_user
 const getSaleById = async (id) => {
     const sale = await Sale.find({id_user:id, description: 'in cart'})
+    return sale
+}
+//obtener todas las ventas por id_user
+const getSalesByUser=async(id)=>{
+    const sale =await Sale.find({id_user:id})
     return sale
 }
 
@@ -61,5 +67,6 @@ module.exports = {
     deleteSale,
     getAllSales,
     getSaleById,
-    deleteCar
+    deleteCar,
+    getSalesByUser
 }
