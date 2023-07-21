@@ -1,12 +1,17 @@
 const Favorite = require("../../models/FavoriteModel")
-
+const Car=require('../../models/CarModel')
 const addFavorites = async(id_user,id_car) => {
     const newFavorite = await new Favorite({
         id_car:id_car,
         id_user:id_user,
     })
     await newFavorite.save()
-    return newFavorite
+    const dataCar=await Car.findById(id_car);
+    const response={
+        id_user:id_user,
+        id_car:dataCar
+    }
+    return response
 }
 
 const removeFavorites = async (id) => {

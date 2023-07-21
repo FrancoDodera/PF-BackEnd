@@ -3,8 +3,8 @@ const {addFavorites, removeFavorites} = require('../../controllers/favorites/fav
 const addFavoritesHandler = async (req,res) => {
     const {id_user,id_car}=req.body
     try {
-        await addFavorites(id_user,id_car)
-        return res.status(200).send('The favorite was added successfully')
+        const response=await addFavorites(id_user,id_car)
+        return res.status(200).send({message:'The favorite was added successfully',data:response})
     } catch (error) {
         res.status(500).send(error)
     }
