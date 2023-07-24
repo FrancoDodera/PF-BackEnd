@@ -3,6 +3,7 @@ const Sale = require('../../models/SaleModel')
 const Detail= require('../../models/VentaDetailModel')
 const Car=require('../../models/CarModel')
 const {postSaleDetail}=require('../../controllers/ventaDetail/ventadetailController')
+const { response } = require('../../app')
 
 
 const postSaleHandler =async (req, res) => {
@@ -91,8 +92,8 @@ const getSaleByIdHandler = async (req, res) => {
     const {id} = req.params
     try {
         const sale = await getSaleById(id)
+        let response=[]
         if(sale.length>0){
-            let response=[]
             let id_sale= sale[0]._id
             const details = await Detail.find({id_venta:id_sale})
             await Promise.all(
@@ -111,9 +112,7 @@ const getSaleByIdHandler = async (req, res) => {
             )
             return res.status(200).json(response)
         }
-        
-        
-        return res.status(200).json('no sales in cart')
+        return res.status(200).json(response)
     } catch (error) {
         res.status(500).json({error: `Error getting sale`})
     }
