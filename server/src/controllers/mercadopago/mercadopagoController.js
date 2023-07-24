@@ -1,6 +1,8 @@
 const mercadopago = require("mercadopago");
 const { postSale } = require("../sale/saleController");
 const { postSaleDetail } = require("../ventaDetail/ventadetailController");
+const Sale=require('../../models/SaleModel')
+const Detail= require('../../models/VentaDetailModel')
 
 
 mercadopago.configure({
@@ -23,23 +25,35 @@ const postPreference = async (req, res) => {
   });
 
   try {
-    const status=true;
-    console.log(detailSale)
-    const saleCreated = await postSale(
-            sale.id_user,
-            sale.description,
-            sale.date,
-            sale.total,
-            status
-    );
-    detailSale.map(async (car) => {
-      await postSaleDetail({
-        id_venta: saleCreated._id,
-        id_car: car.id,
-        amount: car.amount,
-        subtotal: car.price * car.amount,
-      });
-    });
+    const saleExist=await Sale.find({id_user:sale.id_user,description:'in cart'});
+        if(saleExist.length == 0){
+            const newSale=await postSale(sale.id_user,sale.description,sale.date,sale.total)
+            if(detailSale.length > 0 ){
+                await Promise.all(
+                    detailSale.map(async(detail)=>{
+                        await postSaleDetail(newSale._id,detail.id,detail.amount,detail.totalPrice)
+                    })
+                )
+            }
+        }else{
+                const newSale = await Sale.findByIdAndUpdate(
+                    saleExist[0]._id,
+                    {
+                      date: sale.date,
+                      total: sale.total
+                    },
+                    { new: true } // Esto asegura que devuelve el documento actualizado, en lugar del documento anterior a la actualización
+                  );
+                  
+                await Detail.deleteMany({id_venta:newSale._id})
+                if(detailSale.length > 0){
+                    await Promise.all(
+                        detailSale.map(async(detail)=>{
+                            await postSaleDetail(newSale._id,detail.id,detail.amount,detail.totalPrice)
+                        })
+                    )
+                }
+        }
 
     const preference = {
       items: articuls,
