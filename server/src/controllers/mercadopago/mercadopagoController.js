@@ -82,6 +82,21 @@ const postPreference = async (req, res) => {
   }
 };
 
+const finish=async(id_user)=>{
+  try {
+    const response=await Sale.updateOne({id_user:id_user,description:'in cart'},{description:'finished'})
+    if(response.modifiedCount>0){
+      return true
+    }else{
+      return false
+    }
+    
+  } catch (error) {
+    return false
+  }
+  
+}
 module.exports = {
   postPreference,
+  finish
 };

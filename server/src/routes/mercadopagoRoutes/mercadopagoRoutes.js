@@ -1,4 +1,4 @@
-const {postPreferenceHandler} = require('../../handlers/mercadopagoHandler/mercadopagoHandler') 
+const {postPreferenceHandler,finishHandler} = require('../../handlers/mercadopagoHandler/mercadopagoHandler') 
 const {Router} = require('express')
 const app = Router()
 
@@ -7,5 +7,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', postPreferenceHandler)
+app.put('/finish/:id_user', finishHandler)
 
 module.exports = app
