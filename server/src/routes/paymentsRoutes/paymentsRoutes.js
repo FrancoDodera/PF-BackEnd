@@ -9,7 +9,8 @@ const {Router} = require('express')
 const PaymentsRoutes = Router()
 
 
-PaymentsRoutes.post('/', createPaymentHandler);
+PaymentsRoutes.post('/notification', createPaymentHandler);
+
 PaymentsRoutes.get('/', getPaymentsHandler);
 PaymentsRoutes.get('/:id', getPaymentByIdHandler);
 PaymentsRoutes.delete('/:id', deletePaymentHandler);
