@@ -24,6 +24,7 @@ const postPreference = async (req, res) => {
 
   try {
     const status=true;
+    console.log(detailSale)
     const saleCreated = await postSale(
             sale.id_user,
             sale.description,

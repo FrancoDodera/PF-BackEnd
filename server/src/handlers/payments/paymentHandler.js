@@ -8,8 +8,8 @@ const {
 const createPaymentHandler = async (req, res) => {
     const payload = req.body;
     try {
-      const result = await createPayment(payload);
-      res.status(200).json(result);
+      console.log(payload)
+      res.status(200).send("ok");
     } catch (error) {
       res.status(400).json({ error: error.message });
     }

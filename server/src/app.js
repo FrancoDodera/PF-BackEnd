@@ -30,10 +30,10 @@ app.use('/reviews',reviewsRoutes)
 app.use('/user',usersRouter)
 app.use('/marca', marcaRouter);
 app.use('/category', categoryRouter);
+//ruta para webhooks en mercado pago
 app.use('/payments', paymentsRoutes);
 app.use('/cars', carRoutes)
 app.use('/detail',saledetail)
-
 
 app.use('/sale', sale)
 app.use('/checkout', mercadopagoRoutes)
