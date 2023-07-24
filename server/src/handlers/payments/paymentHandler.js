@@ -9,6 +9,7 @@ const createPaymentHandler = async (req, res) => {
     const payload = req.body;
     try {
       console.log(payload)
+      console.log("information")
       res.status(200).send("ok");
     } catch (error) {
       res.status(400).json({ error: error.message });
