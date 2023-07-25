@@ -15,12 +15,12 @@ const authentication = async (body) => {
           }
         );
         const user = await User.findById(emailFind._id);
-        return { acces: true, data: user };
+        return { acces: true, data: user, created:false };
       } else {
             if(emailFind.email==email && emailFind.tokenAuth==token){
-                return { acces: true, data: emailFind };
+                return { acces: true, data: emailFind , created:false};
             }else{
-                return { acces: false};
+                return { acces: false, created:false};
             }
       }
     } else {
@@ -36,7 +36,7 @@ const authentication = async (body) => {
           tokenAuth: token,
         });
         await newUser.save();
-        return { acces: true, data: newUser };
+        return { acces: true, data: newUser, created:true };
     }
   } catch (error) {
     throw error;
