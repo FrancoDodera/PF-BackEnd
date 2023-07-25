@@ -58,9 +58,9 @@ const postPreference = async (req, res) => {
     const preference = {
       items: articuls,
       back_urls: {
-        success: "https://pf-front-end-nine.vercel.app/success",
-        failure: "https://pf-front-end-nine.vercel.app/failure",
-        pending: "https://pf-front-end-nine.vercel.app/pending",
+        success: "https://main--glistening-trifle-bdc588.netlify.app/success",
+        failure: "https://main--glistening-trifle-bdc588.netlify.app/failure",
+        pending: "https://main--glistening-trifle-bdc588.netlify.app/pending",
       },
       auto_return: "approved",
     };
