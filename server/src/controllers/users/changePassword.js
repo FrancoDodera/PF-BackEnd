@@ -6,14 +6,17 @@ const changePassword=async (credentials)=>{
     
     try {
         const user=await User.findById(id);
-        if(user.password == password){
+        if(user.password==null){
             await User.updateOne({_id:id},{password:newPassword})
             return await User.findById(id)
         }else{
-            return {message:'Incorrect password'}
+            if(user.password == password){
+                await User.updateOne({_id:id},{password:newPassword})
+                return await User.findById(id)
+            }else{
+                return {message:'Incorrect password'}
+            }
         }
-        
-       
     } catch (error) {
         throw error
     }
