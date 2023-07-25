@@ -5,8 +5,11 @@ const addNewUser =async (req,res) =>{
     const {email,name,lastName,dni,user,password,type,image}=req.body
     
         const equalUser = await User.findOne({user:user})
+        const equalEmail = await User.findOne({email:email})
         if(equalUser) {
             return res.send('User already exists')
+        }else if(equalEmail){
+            return res.send('There is already a user with this email')
         }else{
             if (!email)  return res.status(400).send(`enter a email`)
             if (!name)  return res.status(400).send(`enter a name`)
