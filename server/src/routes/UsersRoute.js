@@ -1,4 +1,5 @@
 const addNewUser=require('../controllers/users/AddUser')
+const authenticationHandler=require('../handlers/usersHandler/authenticationHandler')
 const DeleteUserHandler =require('../handlers/usersHandler/deleteUserHandler')
 const GetAllUserHandler=require('../handlers/usersHandler/getAllUsersHandler')
 const GetUsersHandler=require('../handlers/usersHandler/getUsersHandler')
@@ -15,7 +16,10 @@ const app = Router()
 app.post('/addUser',async(req,res)=>{
     await addNewUser(req,res)
 })
-
+//autenticacion google
+app.post('/authentication',async(req,res)=>{
+    await authenticationHandler(req,res)
+})
 //borrado logico de usuario, poniendo el status en false
 app.put('/deleteUser/:id', (req,res)=>{
     DeleteUserHandler(req,res)
