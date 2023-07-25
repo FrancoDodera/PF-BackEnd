@@ -58,9 +58,9 @@ const postPreference = async (req, res) => {
     const preference = {
       items: articuls,
       back_urls: {
-        success: "https://main--glistening-trifle-bdc588.netlify.app/success",
-        failure: "https://main--glistening-trifle-bdc588.netlify.app/failure",
-        pending: "https://main--glistening-trifle-bdc588.netlify.app/pending",
+        success: "https://superb-cuchufli-d6ef80.netlify.app/success",
+        failure: "https://superb-cuchufli-d6ef80.netlify.app/failure",
+        pending: "https://superb-cuchufli-d6ef80.netlify.app/pending",
       },
       auto_return: "approved",
     };
