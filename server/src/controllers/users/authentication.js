@@ -7,10 +7,10 @@ const authentication=async (body)=>{
     try {
         const emailFind=await User.findOne({email:email})
         if(emailFind.tokenAuth == null){
-            const updateUser= await User.updateOne({_id:emailFind._id},{
+            await User.updateOne({_id:emailFind._id},{
                 tokenAuth:token
             })
-            const user=await User.findById(updateUser._id)
+            const user=await User.findById(emailFind._id)
             return {acces:true,data:user}
         }else{
             const userFind=await User.findOne({email:user,tokenAuth:token});
