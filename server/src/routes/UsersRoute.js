@@ -48,9 +48,6 @@ app.post('/verifyUser',(req,res)=>{
 app.post('/login',(req,res)=>{
     loginUser(req,res)
 })
-
-
-
 //obtener toda la info de un usuario por id
 app.get('/:id',(req,res)=>{
     GetUserByIdHandler(req,res)
