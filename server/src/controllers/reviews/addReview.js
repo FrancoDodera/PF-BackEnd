@@ -6,7 +6,7 @@ const User = require("../../models/UserModel");
 const userHasCar = async (id_user, id_car) => {
   try {
     let count = 0;
-    const sale = await Sale.find({ id_user });
+    const sale = await Sale.find({ id_user:id_user,description:'finished'});
     if (sale.length > 0) {
       await Promise.all(
         sale.map(async (elem) => {
