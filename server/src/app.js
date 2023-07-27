@@ -11,6 +11,8 @@ const favoritesRoutes =require('./routes/favoritesRoutes/favoriteRoutes')
 const paymentsRoutes = require('./routes/paymentsRoutes/paymentsRoutes')
 const saledetail =require('./routes/saleDetail')
 const sale = require('./routes/saleRoutes/saleRoutes')
+const news = require('./routes/newsRoutes/newsRoutes')
+
 const mercadopagoRoutes = require('./routes/mercadopagoRoutes/mercadopagoRoutes')
 // Configuración de middleware
 
@@ -35,7 +37,7 @@ app.use('/category', categoryRouter);
 app.use('/payments', paymentsRoutes);
 app.use('/cars', carRoutes)
 app.use('/detail',saledetail)
-
+app.use('/news',news)
 app.use('/sale', sale)
 app.use('/checkout', mercadopagoRoutes)
 
